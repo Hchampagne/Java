@@ -18,22 +18,26 @@ public class Surface {
 
        public static void main(String[] args) {
            
-            // declare variablke            
+            // variables           
             double rayon ;
             double surface;
+            double perimetre;
             
             // entre le rayon
             Scanner lectureClavier = new Scanner(System.in); 
             System.out.println("Entrez le rayon :");
             rayon = lectureClavier.nextInt();
             
+            //calcul perimetre
+            perimetre = 2 * PI * rayon;
+            
             //calcul la surface
             surface =  PI * rayon * rayon;
             
             //sortie message et resultat
-            System.out.print("La surface est : ");
-            System.out.println(surface);
-        
-    }
-    
+            System.out.print("Le perimetre vaut : ");
+            System.out.println(perimetre);
+            System.out.print("La surface vaut : ");
+            System.out.println(surface);      
+    }   
 }
