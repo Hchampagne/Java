@@ -27,7 +27,7 @@ public class Echange {
         
         System.out.println("++++++++++++++++++");
         System.out.println("Valeurs");
-        System.out.print("X =  ");
+        System.out.print("X = ");
         System.out.println(nX);
         System.out.print("Y = ");
         System.out.println(nY); 
