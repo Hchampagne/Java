@@ -6,7 +6,7 @@
 package arraylist_ex;
 
 /**
- *
+ * V1.00 du 05/11/2019
  * @author 80010-92-01
  */
 
@@ -27,7 +27,8 @@ public class Arraylist_ex {
         
         //creation tableau
         ArrayList<String> tab = new ArrayList<String>();
-        // entrez des données
+        
+        // entrez des données ds tableau
         System.out.println("Entrez les données (exit pour sortir)");        
         do{
         System.out.print("Donnée : ");
@@ -35,19 +36,28 @@ public class Arraylist_ex {
         flag = !donnee.equals("exit");  //def  flag pour condition if et arret while
         if (flag){tab.add(donnee);}  // entre dans tableau si diff exit 
         }while(flag);  // sort sur exit saisi
+        
+        // list tableau
+        for(String i : tab){
+            System.out.print(i+" ," );
+            System.out.println();
+        }
+        
+        //modif du tableau
+        System.out.print("Entrez le prenom"); //entre le prenom
+        prenom = lectureClavier.nextLine();
+              
+        for (int i=0 ; i<tab.size()-1 ; i++){  //supprimer le prenom et ajoute vide à la fin
+            if(tab.get(i).equals(prenom)){
+                tab.remove(i);
+                tab.add("v");
+            }
+        }
+        
         // list tableau
         for(String i : tab){
             System.out.print(i+" ," );
         }
-        
-        //modif du tableau
-        System.out.println("Entrez le prenom"); 
-        prenom = lectureClavier.nextLine();
-        
-        for (int i=0 ; i<tab.size()-1 ; i++){
-            if(tab.get(i).equals(prenom)){}
-        }
-        
               
         
         
