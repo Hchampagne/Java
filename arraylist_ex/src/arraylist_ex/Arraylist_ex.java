@@ -24,16 +24,13 @@ public class Arraylist_ex {
         String ajout;
         String nouv;
         String suppr;
-        String modif;
-        
-        //creation tableau
-        ArrayList<String> tab = new ArrayList<String>();
-        
+        String modif;     
         boolean flag;
         
         // instanciation scanner pour entrée clavier
         Scanner lectureClavier = new Scanner(System.in);
         
+
         System.out.println("");
         System.out.println("---------------------------------");
         System.out.println("| 1 - Création du tableau       |");
@@ -44,6 +41,10 @@ public class Arraylist_ex {
         System.out.println("| pour sortir exit              |");
         System.out.println("---------------------------------");
         System.out.println(""); 
+        
+
+        //creation tableau
+        ArrayList<String> tab = new ArrayList<>();
         
         
         do{ //boucle pour menu
@@ -79,7 +80,7 @@ public class Arraylist_ex {
                 
                 case "3":
                     //modifer une valeur
-                    if(tab.size() != 0){
+                    if(!tab.isEmpty()){
                         System.out.print("Entrez le prenom à modifier : "); //entre le prenom
                         modif= lectureClavier.nextLine(); 
                    
@@ -98,7 +99,7 @@ public class Arraylist_ex {
                         
                 case "4":    
                     //suppr du tableau
-                    if(tab.size() != 0){
+                    if(!tab.isEmpty()){
                         System.out.print("Entrez le prenom à supprimer : "); //entre le prenom
                         suppr = lectureClavier.nextLine();              
                         for (int i=0 ; i<=tab.size()-1 ; i++){  //supprimer le prenom
