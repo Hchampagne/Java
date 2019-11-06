@@ -35,9 +35,11 @@ public class Nblettre {
         int nb = 0;
         
         for(int i=0 ; i < phrase.length() ; i++){
-            nb = lettre.contains(phrase);
-            }       
-        }              
+            if (lettre.charAt(0) == phrase.charAt(i)){
+                nb++;
+            } 
+                
+        }             
         System.out.println("Nombre de " + lettre + " = " + nb );
     }
 }
