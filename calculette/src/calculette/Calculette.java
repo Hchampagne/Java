@@ -54,7 +54,7 @@ public class Calculette {
             default : 
                  System.out.println("Ce n'est pas un opérateur !!!");
                
-    }
+        }
     
 }
 }
