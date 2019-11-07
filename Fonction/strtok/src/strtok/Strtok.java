@@ -38,6 +38,10 @@ public class Strtok {
     public static void strtok( String ph,String sep,int pos){
              
         String[] result = ph.split(sep);
-        System.out.println(result[pos-1]);  
+        if(pos <= result.length){
+            System.out.println(result[pos-1]); 
+        }else{
+            System.out.println("Pas de résultat "); 
+        }   
     }
 }

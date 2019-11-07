@@ -17,7 +17,7 @@ public class Suite {
  static int nbr3=0; 
  
  public static void main(String args[]){    
-     int c = 10;   
+     int c = 15;   
      //print 0 and 1
      System.out.println(nbr1+" "+nbr2); 
      //deduire 2 car 0 et 1 sont deja affiches
