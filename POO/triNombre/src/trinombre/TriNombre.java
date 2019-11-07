@@ -15,31 +15,24 @@ import java.util.Scanner;
 public class TriNombre {
         
     public int taille;
-    int tab[] = new int[taille];
+    public int tab[];
+    public int titre;
        
-        public void saisie(){
-            
-           int donnee; 
-            
-           
-           Scanner lClavier =new Scanner(System.in);
-           System.out.print("Entrez taille du tableau : ");
-           taille = lClavier.nextInt();          
-           int tab[] = new int[taille];
-         
-           
-           for (int i=0 ; i < taille ; i++){
+        public void saisie(){ 
+           tab = new int[taille];
+           int donnee;          
+           Scanner lClavier = new Scanner(System.in);                 
+           for (int i=0 ; i < tab.length ; i++){
                System.out.print("Entrez  donnée : ");
                donnee = lClavier.nextInt();
                tab[i] = donnee;
-            }           
-         
-        }
+            }          
+        } 
     
         public void trie(){            
             int temp;
             for(int i=0;i<tab.length;i++){
-                for(int j=1;j<tab.length-1;j++){
+                for(int j=1;j<tab.length;j++){
                     if(tab[j-1]>tab[j]){
                         temp = tab[j-1];
                         tab[j-1] = tab[j];
@@ -50,27 +43,14 @@ public class TriNombre {
         }
         
         public void affiche(){ 
-            System.out.println("cc"); 
-            for(int j=0 ; j < taille ; j++){
-                System.out.println(tab[j]);
-            }          
+            System.out.print("TABLEAU "+titre+" : ");
+            for(int j=0 ; j < tab.length ; j++){               
+                System.out.print(tab[j]+" ");                 
+            }
+            System.out.println("");
+            System.out.println("***********************************");       
+            System.out.println("");
         }
-        
-    public static void main(String[] args) {
-        
-        TriNombre t1 = new TriNombre();
-        
-        //Scanner lClavier =new Scanner(System.in);
-        //System.out.print("Entrez taille du tableau : ");
-        //t1.taille = lClavier.nextInt(); 
-        
-       
-        t1.saisie();
-        t1.trie();
-        t1.affiche();
-        
-        
-        
-    }
+   
     
 }
