@@ -22,23 +22,20 @@ public class Triconstr {
         int titre;
                 
         Scanner lClavier = new Scanner(System.in); 
-        
-       
-                        
-       
-
-        
+               
         System.out.println("");
+        
         System.out.print("Entrez la taille du tableau 1 : ");
         taille = lClavier.nextInt();
         titre = 1;
-        nbconst t1 = new nbconst(taille,titre);       
+        nbconst t1 = new nbconst(taille,titre);  
+        
         System.out.print("Entrez la taille du tableau 2 : ");
         taille = lClavier.nextInt();
         titre = 2;
         nbconst t2 = new nbconst(taille,titre); 
-        System.out.println("***********************************");
-                
+        
+        System.out.println("***********************************");               
         System.out.println("");
         
         
@@ -53,8 +50,7 @@ public class Triconstr {
         
         t1.trie();
         t2.trie();
-        
-              
+                    
         t1.affiche();   
         t2.affiche();       
     }
