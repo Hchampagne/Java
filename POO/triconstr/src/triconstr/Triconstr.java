@@ -13,9 +13,7 @@ import java.util.Scanner;
  */
 public class Triconstr {
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) {
        
         int taille;
