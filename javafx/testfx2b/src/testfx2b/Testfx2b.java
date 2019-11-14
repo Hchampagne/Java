@@ -3,24 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testFX2;
+package testfx2b;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
  *
- * @author 80010-92-01
+ * @author Doudou
  */
-public class TestFX2 extends Application 
-{
-	
-    @Override
+public class Testfx2b extends Application {
+    
+      @Override
     
     public void start(Stage primaryStage) throws Exception
     {	
@@ -44,10 +46,6 @@ public class TestFX2 extends Application
     {	
         Application.launch(args);	
     }	
+    
+    
 }
-	
-
-
-    
-    
-

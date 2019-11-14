@@ -66,66 +66,78 @@ public class AdditionController implements Initializable {
     private void btn0_cliick(ActionEvent event) 
     {
         textaera.appendText("+0");
+        tmp += 0;
     }
 
     @FXML
     private void btn2_cilck(ActionEvent event) 
     {
         textaera.appendText("+2");
+        tmp += 2;
     }
 
     @FXML
     private void btn3_click(ActionEvent event) 
     {
         textaera.appendText("+3");
+        tmp += 3;
     }
 
     @FXML
     private void btn4_click(ActionEvent event) 
     {
         textaera.appendText("+4");
+        tmp += 4;
     }
 
     @FXML
     private void btn5_click(ActionEvent event) 
     {
         textaera.appendText("+5");
+        tmp += 5;
     }
 
     @FXML
     private void btn6_click(ActionEvent event) 
     {
         textaera.appendText("+6");
+        tmp += 6;
     }
 
     @FXML
     private void btn7_click(ActionEvent event) 
     {
-        textaera.appendText("+71");
+        textaera.appendText("+7");
+        tmp += 7;
     }
 
     @FXML
     private void btn8_click(ActionEvent event) 
     {
         textaera.appendText("+8");
+        tmp += 8;
     }
 
     @FXML
     private void btn9_click(ActionEvent event) 
     {
         textaera.appendText("+9");
+        tmp += 9;
     }
 
     @FXML
     private void vider_click(ActionEvent event) 
     {
         textaera.clear();
+        tmp = 0;
     }
 
     @FXML
     private void calculer_click(ActionEvent event) 
     {             
-        textaera.appendText("=");              
+        textaera.appendText("="); 
+        String result = Integer.toString(tmp);
+        textaera.appendText(result);
     }
     
 }
