@@ -5,16 +5,10 @@
  */
 package test;
 
-
-
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -24,15 +18,11 @@ import javafx.stage.Stage;
  * @author Doudou
  */
 public class Test extends Application {
-	
- 
-	
+		
     public Test() 
     {	
         System.out.println("constructeur ...");	
     }
-	
- 
 	
     @Override
 	
@@ -48,6 +38,8 @@ public class Test extends Application {
         primaryStage.setTitle( "Un titre") ;	
         primaryStage.setScene(scene) ;	
         primaryStage.show() ;
+        
+        label.setOnMouseMoved(evt -> {System.out.println("ca bouge !");});
     }
 		
     public static void main(String[] args) 
@@ -56,10 +48,8 @@ public class Test extends Application {
         Application.launch(args);	
     }
 	
- 
-	
     @Override
-	
+    
     public void init() throws Exception 
     {
         System.out.println("init ...");	
