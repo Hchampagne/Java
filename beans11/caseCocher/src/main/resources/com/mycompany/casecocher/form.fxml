@@ -3,84 +3,64 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="790.0" prefWidth="897.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.casecocher.FormController">
+<AnchorPane id="AnchorPane" prefHeight="432.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.casecocher.FormController">
    <children>
-      <TextField layoutX="39.0" layoutY="103.0" prefHeight="30.0" prefWidth="477.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextField>
-      <Pane layoutX="796.0" layoutY="103.0" />
-     
-      <TitledPane animated="false" layoutX="619.0" layoutY="103.0" text="choix" AnchorPane.bottomAnchor="481.0" AnchorPane.leftAnchor="619.0" AnchorPane.rightAnchor="69.0" AnchorPane.topAnchor="103.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0">
-               <children>
-                  <Group layoutX="34.0" layoutY="45.0">
-                     <children>
-                        <CheckBox mnemonicParsing="false" text="Couleur de fond" />
-                        <CheckBox layoutY="35.0" mnemonicParsing="false" text="Couleur du texte" />
-                        <CheckBox layoutY="73.0" mnemonicParsing="false" text="Casse" />
-                     </children>
-                  </Group>
-               </children>
-            </AnchorPane>
-        </content>
-      </TitledPane>
-      <TitledPane animated="false" layoutX="114.0" layoutY="456.0" text="Fond">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <Group layoutX="34.0" layoutY="45.0">
-                     <children>
-                        <CheckBox mnemonicParsing="false" text="Rouge" />
-                        <CheckBox layoutY="35.0" mnemonicParsing="false" text="Vert" />
-                        <CheckBox layoutY="73.0" mnemonicParsing="false" text="Bleu" />
-                     </children>
-                  </Group>
-               </children>
-            </AnchorPane>
-         </content>
-      </TitledPane>
-      <TitledPane animated="false" layoutX="373.0" layoutY="456.0" text="Texte">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <Group layoutX="34.0" layoutY="45.0">
-                     <children>
-                        <CheckBox mnemonicParsing="false" text="rouge" />
-                        <CheckBox layoutY="35.0" mnemonicParsing="false" text="Vert" />
-                        <CheckBox layoutY="73.0" mnemonicParsing="false" text="Bleu" />
-                     </children>
-                  </Group>
-               </children>
-            </AnchorPane>
-         </content>
-      </TitledPane>
-      <TitledPane animated="false" layoutX="643.0" layoutY="456.0" text="Casse">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <Group layoutX="34.0" layoutY="45.0">
-                     <children>
-                        <CheckBox mnemonicParsing="false" text="Minuscule" />
-                        <CheckBox layoutY="35.0" mnemonicParsing="false" text="Majuscule" />
-                     </children>
-                  </Group>
-               </children>
-            </AnchorPane>
-         </content>
-      </TitledPane>
-      <Label layoutX="33.0" layoutY="219.0" text="Label" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="381.0">
+      <TextField fx:id="saisie" layoutX="29.0" layoutY="44.0" onAction="#saisie_change" prefHeight="30.0" prefWidth="320.0" promptText="Saisie" />
+      <Label fx:id="label" layoutX="29.0" layoutY="108.0" prefHeight="30.0" prefWidth="320.0" text="Label">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
+      <TitledPane fx:id="choix" layoutX="365.0" layoutY="38.0" prefHeight="123.0" prefWidth="200.0" text="Choix">
+         <content>
+            <Group>
+               <children>
+                  <CheckBox fx:id="c_fond" mnemonicParsing="false" onAction="#c_fond_select" text="Couleur de fond" />
+                  <CheckBox fx:id="c_texte" layoutY="25.0" mnemonicParsing="false" onAction="#c_texte_select" text="Couleur de texte" />
+                  <CheckBox fx:id="c_casse" layoutY="51.0" mnemonicParsing="false" onAction="#c_casse_select" text="Casse" />
+               </children>
+            </Group>
+         </content>
+      </TitledPane>
+      <TitledPane fx:id="texte" layoutX="214.0" layoutY="217.0" prefHeight="149.0" prefWidth="151.0" text="Texte">
+         <content>
+            <Group>
+               <children>
+                  <RadioButton fx:id="t_rouge" mnemonicParsing="false" onAction="#t_rouge_select" text="Rouge" />
+                  <RadioButton fx:id="t_blanc" layoutY="24.0" mnemonicParsing="false" onAction="#t_blanc_select" text="Blanc" />
+                  <RadioButton fx:id="t_noir" layoutY="48.0" mnemonicParsing="false" onAction="#t_noir_select" text="Noir" />
+               </children>
+            </Group>
+         </content>
+      </TitledPane>
+      <TitledPane fx:id="casse" layoutX="404.0" layoutY="217.0" prefHeight="149.0" prefWidth="151.0" text="Casse">
+         <content>
+            <Group>
+               <children>
+                  <RadioButton fx:id="min" mnemonicParsing="false" onAction="#min_select" text="Minuscule" />
+                  <RadioButton fx:id="maj" layoutY="29.0" mnemonicParsing="false" onAction="#maj_select" text="Majuscule" />
+               </children>
+            </Group>
+         </content>
+      </TitledPane>
+      <Group layoutX="103.0" layoutY="394.0" />
+      <Group layoutX="257.0" layoutY="437.0" />
+      <TitledPane fx:id="fond" layoutX="38.0" layoutY="217.0" prefHeight="149.0" prefWidth="151.0" text="Fond">
+         <content>
+            <Group>
+               <children>
+                  <RadioButton fx:id="f_rouge" mnemonicParsing="false" onAction="#f_rouge_select" text="Rouge" />
+                  <RadioButton fx:id="f_vert" layoutY="24.0" mnemonicParsing="false" onAction="#f_vert_select" text="Vert" />
+                  <RadioButton fx:id="f_bleu" layoutY="48.0" mnemonicParsing="false" onAction="#f_bleu_select" text="Bleu" />
+               </children>
+            </Group>
+         </content>
+      </TitledPane>
    </children>
 </AnchorPane>
