@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="432.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.casecocher.FormController">
+   <children>
+      <TextField fx:id="saisie" layoutX="29.0" layoutY="44.0" onAction="#saisie_change" prefHeight="30.0" prefWidth="320.0" promptText="Saisie" />
+      <Label fx:id="label" layoutX="29.0" layoutY="108.0" prefHeight="30.0" prefWidth="320.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TitledPane fx:id="choix" layoutX="365.0" layoutY="38.0" prefHeight="123.0" prefWidth="200.0" text="Choix">
+         <content>
+            <Group>
+               <children>
+                  <CheckBox fx:id="c_fond" mnemonicParsing="false" onAction="#c_fond_select" text="Couleur de fond" />
+                  <CheckBox fx:id="c_texte" layoutY="25.0" mnemonicParsing="false" onAction="#c_texte_select" text="Couleur de texte" />
+                  <CheckBox fx:id="c_casse" layoutY="51.0" mnemonicParsing="false" onAction="#c_casse_select" text="Casse" />
+               </children>
+            </Group>
+         </content>
+      </TitledPane>
+      <TitledPane fx:id="texte" layoutX="214.0" layoutY="217.0" prefHeight="149.0" prefWidth="151.0" text="Texte">
+         <content>
+            <Group>
+               <children>
+                  <RadioButton fx:id="t_rouge" mnemonicParsing="false" onAction="#t_rouge_select" text="Rouge" />
+                  <RadioButton fx:id="t_blanc" layoutY="24.0" mnemonicParsing="false" onAction="#t_blanc_select" text="Blanc" />
+                  <RadioButton fx:id="t_noir" layoutY="48.0" mnemonicParsing="false" onAction="#t_noir_select" text="Noir" />
+               </children>
+            </Group>
+         </content>
+      </TitledPane>
+      <TitledPane fx:id="casse" layoutX="404.0" layoutY="217.0" prefHeight="149.0" prefWidth="151.0" text="Casse">
+         <content>
+            <Group>
+               <children>
+                  <RadioButton fx:id="min" mnemonicParsing="false" onAction="#min_select" text="Minuscule" />
+                  <RadioButton fx:id="maj" layoutY="29.0" mnemonicParsing="false" onAction="#maj_select" text="Majuscule" />
+               </children>
+            </Group>
+         </content>
+      </TitledPane>
+      <Group layoutX="103.0" layoutY="394.0" />
+      <Group layoutX="257.0" layoutY="437.0" />
+      <TitledPane fx:id="fond" layoutX="38.0" layoutY="217.0" prefHeight="149.0" prefWidth="151.0" text="Fond">
+         <content>
+            <Group>
+               <children>
+                  <RadioButton fx:id="f_rouge" mnemonicParsing="false" onAction="#f_rouge_select" text="Rouge" />
+                  <RadioButton fx:id="f_vert" layoutY="24.0" mnemonicParsing="false" onAction="#f_vert_select" text="Vert" />
+                  <RadioButton fx:id="f_bleu" layoutY="48.0" mnemonicParsing="false" onAction="#f_bleu_select" text="Bleu" />
+               </children>
+            </Group>
+         </content>
+      </TitledPane>
+   </children>
+</AnchorPane>
