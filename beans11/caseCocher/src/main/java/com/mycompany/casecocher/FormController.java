@@ -81,17 +81,32 @@ public class FormController implements Initializable {
     //active fond si select fond
     @FXML
     private void c_fond_select(ActionEvent event) {
-        fond.setDisable(false);
+        
+        if (fond.isDisabled()) {fond.setDisable(false);
+        } else {
+             fond.setDisable(true);
+        }       
     }
     //active texte si select casse
     @FXML
     private void c_casse_select(ActionEvent event) {
-        casse.setDisable(false);
+        
+        if (casse.isDisabled()) {casse.setDisable(false);
+        } else {
+             casse.setDisable(true);
+        } 
+        
+        //casse.setDisable(false);
     }
     //active texte si select texte
     @FXML
     private void c_texte_select(ActionEvent event) {
-        texte.setDisable(false);
+        
+        if (texte.isDisabled()) {texte.setDisable(false);
+        } else {
+             texte.setDisable(true);
+        } 
+        //texte.setDisable(false);
     }
 //gestion fond
     //fond rouge

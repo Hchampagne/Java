@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="558.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.melange1.FormController">
+   <children>
+      <Slider fx:id="rouge" blockIncrement="1.0" layoutX="20.0" layoutY="300.0" max="255.0" onMouseReleased="#initialize" prefHeight="30.0" prefWidth="377.0" />
+      <Slider fx:id="vert" blockIncrement="1.0" layoutX="20.0" layoutY="380.0" max="255.0" onMouseReleased="#initialize" prefHeight="30.0" prefWidth="377.0" />
+      <Slider fx:id="bleu" blockIncrement="1.0" layoutX="20.0" layoutY="460.0" max="255.0" onMouseReleased="#initialize" prefHeight="30.0" prefWidth="377.0" />
+      <Label fx:id="label" layoutX="17.0" layoutY="40.0" prefHeight="256.0" prefWidth="676.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="10.0" />
+      <Label layoutX="410.0" layoutY="285.0" prefHeight="60.0" prefWidth="286.0" style="-fx-background-color: red;" />
+      <Label layoutX="410.0" layoutY="365.0" prefHeight="60.0" prefWidth="286.0" style="-fx-background-color: green;" />
+      <Label layoutX="410.0" layoutY="445.0" prefHeight="60.0" prefWidth="286.0" style="-fx-background-color: blue;" />
+      <Label fx:id="t_rouge" layoutX="539.0" layoutY="307.0" style="-fx-background-color: white;" />
+      <Label fx:id="t_vert" layoutX="539.0" layoutY="387.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: white;" text="0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="t_bleu" layoutX="539.0" layoutY="467.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: white;" text="0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="t_rouge" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="539.0" layoutY="307.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: white;" text="0" textAlignment="JUSTIFY">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
