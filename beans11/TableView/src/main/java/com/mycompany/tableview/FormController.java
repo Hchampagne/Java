@@ -22,41 +22,42 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class FormController implements Initializable {
 
+    
     @FXML
-    private TableView<?> Tableview;
+    private TableColumn<?,?> prenom;
     @FXML
-    private TableColumn<?, ?> col1;
+    private TableColumn<?,?> nom;
     @FXML
-    private TableColumn<?, ?> col2;
+    private TableColumn<?,?> ville;  
     @FXML
-    private TableColumn<?, ?> col3;
+    private TableView<?> clients;
+    
+    //ObservableList<Client> model;
   
-
     /**
      * Initializes the controller class.
      * @param url
      * @param rb
-     */
+     */ 
+    
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) { 
+         //initialisation du modèle
+        final ObservableList<Client> model = FXCollections.observableArrayList(
+            new Client("Josh", "Homme", "Joshua Tree"),	
+            new Client("Dave", "Grohl", "Warren"),	
+            new Client("Krist", "Novoselic", "Compton"),	
+            new Client("Robert", "Trujillo", "Santa Monica")	
+        ); 
+            
+        //On rend le tableau non-éditable	
+        clients.setEditable(false);	
+        // Jonction du tableau avec les données	
+        prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));	
+        nom.setCellValueFactory(new PropertyValueFactory<>("nom"));	
+        ville.setCellValueFactory(new PropertyValueFactory<>("ville"));
+		
+       clients.setItems(model);
         
-        // instanciation de l'attribut
-        ObservableList<Client> model = FXCollections.observableArrayList();
-        
-        // Quelques clients pour notre test	
-        model.add(new Client("Josh", "Homme", "Joshua Tree"));	
-        model.add(new Client("Dave", "Grohl", "Warren"));	
-        model.add(new Client("Krist", "Novoselic", "Compton"));	
-        model.add(new Client("Robert", "Trujillo", "Santa Monica"));
-        
-        
-        //Tableview.setItems(model);
-        
-        col1.setCellValueFactory(new PropertyValueFactory<Client, String>("nom"));	
-        col2.setCellValueFactory(new PropertyValueFactory<Client, String>("prenom"));	
-        col3.setCellValueFactory(new PropertyValueFactory<Client, String>("ville"));
-        
-        
-        
-    }      
+    }   
 }

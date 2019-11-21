@@ -8,46 +8,55 @@ package com.mycompany.tableview;
 /**
  *
  * @author 80010-92-01
+ * 
  */
+
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Client {
+
+   
+        private StringProperty nom;
+        private StringProperty prenom;
+        private StringProperty ville; 
     
-    public String nom;
-    public String prenom;
-    public String ville;
     
-    public Client(){
+    public Client(){ 
+    // constructeur vide defaut
     }
     
-    public Client(String nom, String prenom, String ville){
-        this.nom = nom;
-        this.prenom = prenom;
-        this.ville = ville; 
+    Client(String n, String p, String v){
+    // constructeur   
+        this.prenom = new SimpleStringProperty(p);
+        this.nom = new SimpleStringProperty(n);
+        this.ville = new SimpleStringProperty(v);
     }
 
-    public String getNom() {
+    public StringProperty getNom() {
         return nom;
     }
 
     public void setNom(String nom) {
-        this.nom = nom;
+        //this.nom = nom;
+        this.nom.set(nom);
     }
 
-    public String getPrenom() {
+    public StringProperty getPrenom() {
         return prenom;
     }
 
     public void setPrenom(String prenom) {
-        this.prenom = prenom;
+        //this.prenom = prenom;
+        this.prenom.set(prenom);
     }
 
-    public String getVille() {
+    public StringProperty getVille() {
         return ville;
     }
 
     public void setVille(String ville) {
-        this.ville = ville;
-    }
-    
-    
-    
+        //this.ville = ville;
+        this.ville.set(ville);
+    }   
 }
