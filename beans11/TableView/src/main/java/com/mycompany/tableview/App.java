@@ -1,4 +1,4 @@
-package com.mycompany.casecocher;
+package com.mycompany.tableview;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,12 +15,9 @@ public class App extends Application {
 
     private static Scene scene;
 
-  
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("form"), 600, 432);
-                stage.setResizable(false);
-
+        scene = new Scene(loadFXML("form"));
         stage.setScene(scene);
         stage.show();
     }
