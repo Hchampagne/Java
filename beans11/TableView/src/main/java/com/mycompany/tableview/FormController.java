@@ -20,6 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author 80010-92-01
  */
+
 public class FormController implements Initializable {
 
     
@@ -33,6 +34,7 @@ public class FormController implements Initializable {
     private TableView<?> clients;
     
     //ObservableList<Client> model;
+   
   
     /**
      * Initializes the controller class.
@@ -41,23 +43,33 @@ public class FormController implements Initializable {
      */ 
     
     @Override
-    public void initialize(URL url, ResourceBundle rb) { 
-         //initialisation du modèle
-        final ObservableList<Client> model = FXCollections.observableArrayList(
-            new Client("Josh", "Homme", "Joshua Tree"),	
-            new Client("Dave", "Grohl", "Warren"),	
-            new Client("Krist", "Novoselic", "Compton"),	
-            new Client("Robert", "Trujillo", "Santa Monica")	
-        ); 
+    public void initialize(URL url, ResourceBundle rb) {
+        
+       final ObservableList<Client> model = FXCollections.observableArrayList();
+        
+        //initialisation du modèle              
+        model.add(new Client("Josh", "Homme", "Joshua Tree"));	
+        model.add(new Client("Dave", "Grohl", "Warren"));	
+        model.add(new Client("Krist", "Novoselic", "Compton"));	
+        model.add(new Client("Robert", "Trujillo", "Santa Monica"));
+        
+        //model.setAll(
+        //        new Client("Josh", "Homme", "Joshua Tree"),
+        //        new Client("Dave", "Grohl", "Warren"),
+        //        new Client("Krist", "Novoselic", "Compton"),
+        //        new Client("Robert", "Trujillo", "Santa Monica")
+        //);
+        
             
         //On rend le tableau non-éditable	
         clients.setEditable(false);	
+        
         // Jonction du tableau avec les données	
         prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));	
         nom.setCellValueFactory(new PropertyValueFactory<>("nom"));	
         ville.setCellValueFactory(new PropertyValueFactory<>("ville"));
 		
-       clients.setItems(model);
+       //clients.setItems(model);
         
     }   
 }
