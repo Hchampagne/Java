@@ -111,9 +111,8 @@ public class FormController implements Initializable {
 
     @FXML
     private void click_suppr(ActionEvent event) {  //supprime une entrée /ligne      
-        model.remove(getSelectedItems());
-        clients.setItems(model);
         
+           
     }
   }  
 
