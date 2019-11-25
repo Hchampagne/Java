@@ -88,24 +88,32 @@ public class FormController implements Initializable {
                      
     }
 
-
     @FXML
-    private void click_sauve(ActionEvent event) {
-        
-        
-        
+    private void click_sauve(ActionEvent event) {  // ajout 
+        // recup valeurs des champs
+        String n_prenom = t_prenom.getText();
+        String n_nom = t_nom.getText();
+        String n_ville = t_ville.getText();       
+        // test champs vide
+        if (!n_prenom.equals("") && !n_nom.equals("") && !n_ville.equals("")){
+            //ajout à liste
+            model.add(new Client(n_prenom, n_nom, n_ville));
+            clients.setItems(model);
+        }   
     }
 
     @FXML
-    private void click_annul(ActionEvent event) {
-        
-        
+    private void click_annul(ActionEvent event) { //efface les champs de saisie
+        t_prenom.clear();
+        t_nom.clear();
+        t_ville.clear();    
     }
 
     @FXML
-    private void click_suppr(ActionEvent event) {
+    private void click_suppr(ActionEvent event) {  //supprime une entrée /ligne      
+        model.remove(getSelectedItems());
+        clients.setItems(model);
+        
     }
-
-    
   }  
 
