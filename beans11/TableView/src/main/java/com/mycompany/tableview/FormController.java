@@ -9,10 +9,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -25,15 +28,28 @@ public class FormController implements Initializable {
 
     
     @FXML
-    private TableColumn<?,?> prenom;
+    private TableColumn<Client,String> prenom;
     @FXML
-    private TableColumn<?,?> nom;
+    private TableColumn<Client,String> nom;
     @FXML
-    private TableColumn<?,?> ville;  
+    private TableColumn<Client,String> ville;  
     @FXML
-    private TableView<?> clients;
+    private TableView<Client> clients;
     
-    //ObservableList<Client> model;
+    ObservableList<Client> model;
+    
+    @FXML
+    private Button sauver;
+    @FXML
+    private Button annuler;
+    @FXML
+    private Button supprimer;
+    @FXML
+    private TextField t_ville;
+    @FXML
+    private TextField t_prenom;
+    @FXML
+    private TextField t_nom;
    
   
     /**
@@ -45,7 +61,7 @@ public class FormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-       final ObservableList<Client> model = FXCollections.observableArrayList();
+        model =  FXCollections.observableArrayList();
         
         //initialisation du modèle              
         model.add(new Client("Josh", "Homme", "Joshua Tree"));	
@@ -57,10 +73,9 @@ public class FormController implements Initializable {
         //        new Client("Josh", "Homme", "Joshua Tree"),
         //        new Client("Dave", "Grohl", "Warren"),
         //        new Client("Krist", "Novoselic", "Compton"),
-        //        new Client("Robert", "Trujillo", "Santa Monica")
+        //        new Client("Robert", "Trujillo", "Santa Monica"),
         //);
-        
-            
+                   
         //On rend le tableau non-éditable	
         clients.setEditable(false);	
         
@@ -68,8 +83,29 @@ public class FormController implements Initializable {
         prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));	
         nom.setCellValueFactory(new PropertyValueFactory<>("nom"));	
         ville.setCellValueFactory(new PropertyValueFactory<>("ville"));
-		
-       //clients.setItems(model);
+              
+       clients.setItems(model);
+                     
+    }
+
+
+    @FXML
+    private void click_sauve(ActionEvent event) {
         
-    }   
-}
+        
+        
+    }
+
+    @FXML
+    private void click_annul(ActionEvent event) {
+        
+        
+    }
+
+    @FXML
+    private void click_suppr(ActionEvent event) {
+    }
+
+    
+  }  
+

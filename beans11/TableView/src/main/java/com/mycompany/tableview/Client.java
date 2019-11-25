@@ -21,7 +21,7 @@ public class Client {
     private  StringProperty prenom;	
     private  StringProperty ville;
 	
-    public Client() {
+    public Client(){
         //constructeur vide defaut
     }
 	
