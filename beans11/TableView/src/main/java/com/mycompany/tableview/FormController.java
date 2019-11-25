@@ -111,7 +111,9 @@ public class FormController implements Initializable {
 
     @FXML
     private void click_suppr(ActionEvent event) {  //supprime une entrée /ligne      
-        
+        int selectedIndex = clients.getSelectionModel().getSelectedIndex();
+        System.out.println(selectedIndex);
+        clients.getItems().remove(selectedIndex);
            
     }
   }  
