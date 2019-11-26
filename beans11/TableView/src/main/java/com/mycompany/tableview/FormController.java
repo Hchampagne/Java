@@ -96,7 +96,7 @@ public class FormController implements Initializable {
         String n_ville = t_ville.getText();       
         // test champs vide
         if (!n_prenom.equals("") && !n_nom.equals("") && !n_ville.equals("")){
-            //ajout à liste
+            //ajout à la liste
             model.add(new Client(n_prenom, n_nom, n_ville));
             clients.setItems(model);
         }   
@@ -111,10 +111,9 @@ public class FormController implements Initializable {
 
     @FXML
     private void click_suppr(ActionEvent event) {  //supprime une entrée /ligne      
-        int selectedIndex = clients.getSelectionModel().getSelectedIndex();
-        System.out.println(selectedIndex);
-        clients.getItems().remove(selectedIndex);
-           
+        int Index = clients.getSelectionModel().getSelectedIndex();  // recupere l'index de la ligne à supprimer
+       // System.out.println(selectedIndex);
+        clients.getItems().remove(Index);  // enlève l'objet corresspondant à l'index dans la liste observablelist        
     }
   }  
 
