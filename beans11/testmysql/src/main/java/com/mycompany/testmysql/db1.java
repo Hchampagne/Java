@@ -7,6 +7,7 @@ package com.mycompany.testmysql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -22,9 +23,24 @@ public class db1 {
             String url ="jdbc:mysql://localhost:3306/papyrus?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
             String login = "root";
             String mdp = "";
+            Statement res;
+            Connection con;
+            ResultSet result;
             
-            Connection con = DriverManager.getConnection(url,login,mdp);
-            Statement res = con.createStatement();
+            con = DriverManager.getConnection(url,login,mdp);
+            res = con.createStatement();
+            result = res.executeQuery("SELECT * FROM fournis");
+            
+            while (result.next()) {	
+                int num = result.getInt("numfou");	
+                String nom = result.getString("nomfou");	
+                String ville = result.getString("vilfou");	
+                System.out.format("[%d] %s %s\n", num, nom, ville);	
+            }	
+            res.close();	
+            result.close();	
+            con.close();
+            
             System.out.println ("ça marche ");	
         }	
     catch(SQLException e)	
