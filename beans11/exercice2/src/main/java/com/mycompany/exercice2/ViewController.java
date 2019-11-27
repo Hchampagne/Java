@@ -123,7 +123,9 @@ public class ViewController implements Initializable {
             cmd = con.prepareStatement("SELECT numcom,datcom, obscom FROM entcom WHERE numfou = ?");
             cmd.setInt(1,numf);
             commande = cmd.executeQuery();
-             line =nomf+"\n";
+            
+            line = nomf + "\n";
+             
             while(commande.next()){
                 int numc = commande.getInt("numcom");
                 String datc = commande.getString("datcom");
