@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.exercice1.FormController">
+    <stylesheets>
+        <URL value="@/styles/form.css" />
+    </stylesheets>
+   <children>
+      <Button fx:id="Btn" layoutX="455.0" layoutY="51.0" mnemonicParsing="false" onAction="#select" prefHeight="25.0" prefWidth="118.0" text="Rechercher">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="entree" layoutX="183.0" layoutY="51.0" prefHeight="25.0" prefWidth="251.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="61.0" layoutY="56.0" text="Code fournisseur">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nom" layoutX="175.0" layoutY="164.0" prefHeight="30.0" prefWidth="335.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="adresse" layoutX="175.0" layoutY="219.0" prefHeight="30.0" prefWidth="335.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="cp" layoutX="175.0" layoutY="273.0" prefHeight="30.0" prefWidth="111.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="ville" layoutX="318.0" layoutY="273.0" prefHeight="30.0" prefWidth="192.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="contact" layoutX="175.0" layoutY="327.0" prefHeight="30.0" prefWidth="335.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="32.0" layoutY="127.0" text="Informations fournisseur">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="85.0" layoutY="171.0" text="Nom">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="85.0" layoutY="226.0" text="Adresse">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="85.0" layoutY="280.0" text="CP / Ville">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="85.0" layoutY="334.0" text="Contact">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label fx:id="affiche" layoutX="61.0" layoutY="14.0" />
+      <Label fx:id="er_fournis" layoutX="183.0" layoutY="90.0" />
+   </children>
+</AnchorPane>
