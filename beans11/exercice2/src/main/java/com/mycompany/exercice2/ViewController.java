@@ -35,8 +35,10 @@ public class ViewController implements Initializable {
     private ComboBox<String> choix;
     @FXML
     private Label label;
+    @FXML
+    private Label label1;
     
-    
+    //deff requetes
     Statement res;
     PreparedStatement cmd;
     PreparedStatement fourn;
@@ -45,21 +47,28 @@ public class ViewController implements Initializable {
     ResultSet commande;
     ResultSet fournisseur;
     
+    //variables connexion
     String url_db ="jdbc:mysql://localhost:3306/papyrus?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
     String login = "root";
     String mdp = "";
     
+    //variables requetes
     int numf;
+    String nomf;
+    String line = "";
+  
     
     /**
      * Initializes the controller class.
      * @param url
      * @param rb
      */
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        //connexion base de donée
+        //connexion base de donée 
         try { 
             con = DriverManager.getConnection(url_db,login,mdp);      
             label.setText("Vous êtes connecté");
@@ -68,11 +77,11 @@ public class ViewController implements Initializable {
             label.setText("Erreur de connexion");
             label.setStyle("-fx-text-fill: red;");
         }
-        
+       
         //recup N°fournisseur  table fournis colonne nomfou
         try {
             res = con.createStatement();
-            result = res.executeQuery("SELECT nomfou,numfou FROM fournis");
+            result = res.executeQuery("SELECT nomfou FROM fournis");
         } catch (SQLException ex) {
             // échec
         }
@@ -87,49 +96,45 @@ public class ViewController implements Initializable {
         }
     }    
 
+    @FXML
     private void select(ActionEvent event) {
         
+        // recup valeur du comboBox
+        nomf = choix.getValue();
+        System.out.println(nomf);
         
-        
-        
-     /*
+        // recupo n°forunissuer fct nom fournisseur table forunis colonne numfou                        
         try {
-            fourn = con.prepareStatement("Selectt numfou FROM fournis WHERE nomfou = discobol");
+            fourn = con.prepareStatement("Select numfou FROM fournis WHERE nomfou = ?");
             fourn.setString(1, nomf);
             fournisseur = fourn.executeQuery();
             
             while(fournisseur.next()){
                  numf = fournisseur.getInt("numfou");
-            }
-                       
+                 System.out.println(numf);
+            }                      
         } catch (SQLException ex) {
             //échec
-        }
-         
-      */  
+        }   
         
-        /*
-        try {
+        try { 
             
-            numf = 9150;
+            // recup les commandes fct n°fournisseur table entcom colonne numcom,datcom,obscom
             cmd = con.prepareStatement("SELECT numcom,datcom, obscom FROM entcom WHERE numfou = ?");
             cmd.setInt(1,numf);
             commande = cmd.executeQuery();
-            
+             line =nomf+"\n";
             while(commande.next()){
                 int numc = commande.getInt("numcom");
                 String datc = commande.getString("datcom");
                 String obsc = commande.getString("obscom");
                 
-                affiche.setText(numc + " " + datc + " " + obsc);  
+                line += (numc + "  " + datc + "  " + obsc)+"\n";  // concatenation pour affichage
+                affiche.setText(line);  
                 
             }          
         } catch (SQLException ex) {
             //échec
-        }
-        
-         */     
+        }           
     }   
-
-    
 }
