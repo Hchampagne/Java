@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="499.0" prefWidth="631.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.exercice3.FXMLController">
+    <stylesheets>
+        <URL value="@/styles/fxml.css" />
+    </stylesheets>
+   <children>
+      <TextField fx:id="nom" layoutX="171.0" layoutY="146.0" prefHeight="25.0" prefWidth="381.0" />
+      <TextField fx:id="rue" layoutX="171.0" layoutY="204.0" prefHeight="25.0" prefWidth="381.0" />
+      <TextField fx:id="cp" layoutX="171.0" layoutY="266.0" prefHeight="25.0" prefWidth="151.0" />
+      <TextField fx:id="contact" layoutX="171.0" layoutY="328.0" prefHeight="25.0" prefWidth="381.0" />
+      <TextField fx:id="ville" layoutX="347.0" layoutY="266.0" prefHeight="25.0" prefWidth="207.0" />
+      <Button fx:id="ajout" layoutX="247.0" layoutY="414.0" mnemonicParsing="false" onAction="#ajout" prefHeight="25.0" prefWidth="120.0" text="Ajout" />
+      <Button fx:id="annuler" layoutX="434.0" layoutY="414.0" mnemonicParsing="false" onAction="#annuler" prefHeight="25.0" prefWidth="120.0" text="Annuler" />
+      <Label layoutX="68.0" layoutY="150.0" text="NOM" />
+      <Label layoutX="68.0" layoutY="208.0" text="RUE" />
+      <Label layoutX="68.0" layoutY="270.0" text="CP / VILLE" />
+      <Label layoutX="68.0" layoutY="332.0" text="CONTACT" />
+      <Label layoutX="68.0" layoutY="65.0" text="Ajout d'un fournisseur" underline="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="message" layoutX="54.0" layoutY="460.0" />
+   </children>
+</AnchorPane>

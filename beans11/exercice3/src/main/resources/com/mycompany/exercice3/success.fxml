@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="182.0" prefWidth="393.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.exercice3.SuccessController">
+    <stylesheets>
+        <URL value="@/styles/success.css" />
+    </stylesheets>
+   <children>
+      <Button fx:id="btnok" layoutX="128.0" layoutY="134.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="137.0" text="OK">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Label layoutX="183.0" layoutY="74.0" text="Le fournisseur a été ajouté" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="50.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
