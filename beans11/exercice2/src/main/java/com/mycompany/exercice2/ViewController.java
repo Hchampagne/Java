@@ -68,7 +68,7 @@ public class ViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        //connexion base de donée 
+        //connexion base de donnée 
         try { 
             con = DriverManager.getConnection(url_db,login,mdp);      
             label.setText("Vous êtes connecté");

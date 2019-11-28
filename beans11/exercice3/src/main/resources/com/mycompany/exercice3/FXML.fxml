@@ -12,11 +12,11 @@
         <URL value="@/styles/fxml.css" />
     </stylesheets>
    <children>
-      <TextField fx:id="nom" layoutX="171.0" layoutY="146.0" prefHeight="25.0" prefWidth="381.0" />
-      <TextField fx:id="rue" layoutX="171.0" layoutY="204.0" prefHeight="25.0" prefWidth="381.0" />
-      <TextField fx:id="cp" layoutX="171.0" layoutY="266.0" prefHeight="25.0" prefWidth="151.0" />
-      <TextField fx:id="contact" layoutX="171.0" layoutY="328.0" prefHeight="25.0" prefWidth="381.0" />
-      <TextField fx:id="ville" layoutX="347.0" layoutY="266.0" prefHeight="25.0" prefWidth="207.0" />
+      <TextField fx:id="t_nom" layoutX="171.0" layoutY="146.0" onKeyTyped="#nom_change" prefHeight="25.0" prefWidth="381.0" style="-fx-border-color: black;" />
+      <TextField fx:id="t_rue" layoutX="171.0" layoutY="204.0" onKeyTyped="#rue_change" prefHeight="25.0" prefWidth="381.0" style="-fx-border-color: black;" />
+      <TextField fx:id="t_cp" layoutX="171.0" layoutY="266.0" onKeyTyped="#cp_change" prefHeight="25.0" prefWidth="151.0" style="-fx-border-color: black;" />
+      <TextField fx:id="t_contact" layoutX="171.0" layoutY="328.0" onKeyTyped="#contact_change" prefHeight="25.0" prefWidth="381.0" style="-fx-border-color: black;" />
+      <TextField fx:id="t_ville" layoutX="347.0" layoutY="266.0" onKeyTyped="#ville_change" prefHeight="25.0" prefWidth="207.0" style="-fx-border-color: black;" />
       <Button fx:id="ajout" layoutX="247.0" layoutY="414.0" mnemonicParsing="false" onAction="#ajout" prefHeight="25.0" prefWidth="120.0" text="Ajout" />
       <Button fx:id="annuler" layoutX="434.0" layoutY="414.0" mnemonicParsing="false" onAction="#annuler" prefHeight="25.0" prefWidth="120.0" text="Annuler" />
       <Label layoutX="68.0" layoutY="150.0" text="NOM" />
@@ -29,5 +29,14 @@
          </font>
       </Label>
       <Label fx:id="message" layoutX="54.0" layoutY="460.0" />
+      <Label fx:id="alertNom" layoutX="172.0" layoutY="171.0">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="alertRue" layoutX="172.0" layoutY="229.0" />
+      <Label fx:id="alertCp" layoutX="172.0" layoutY="291.0" />
+      <Label fx:id="alertVille" layoutX="348.0" layoutY="291.0" />
+      <Label fx:id="alertContact" layoutX="172.0" layoutY="353.0" />
    </children>
 </AnchorPane>

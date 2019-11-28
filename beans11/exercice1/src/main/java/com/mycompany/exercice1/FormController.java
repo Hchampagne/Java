@@ -70,14 +70,11 @@ public class FormController implements Initializable {
        
         try {
              // connexion db et prep requete 
-            con = DriverManager.getConnection(url_db,login,mdp);
-            res = con.prepareStatement("SELECT * FROM fournis WHERE numfou = ?");
-            
+            con = DriverManager.getConnection(url_db,login,mdp);           
             affiche.setText("connexion");
             affiche.setStyle("-fx-text-fill: green;");
            
-        } catch (SQLException ex) {
-            
+        } catch (SQLException ex) {           
             affiche.setText("Erreur connexion !");
             affiche.setStyle("-fx-text-fill: red;");
         }            
@@ -91,6 +88,7 @@ public class FormController implements Initializable {
         int codeInt = Integer.valueOf(code);       
         try {
             // exectue la requete 
+            res = con.prepareStatement("SELECT * FROM fournis WHERE numfou = ?");
             res.setInt(1, codeInt);
             result = res.executeQuery();
                 //recup et affiche les données
