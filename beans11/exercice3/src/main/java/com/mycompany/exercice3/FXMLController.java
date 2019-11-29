@@ -122,7 +122,13 @@ public class FXMLController implements Initializable {
     // ajout fournisseur
     @FXML
     private void ajout(ActionEvent event) {
-               
+        
+        nom = t_nom.getText();
+        rue = t_rue.getText();  
+        cp = t_cp.getText();
+        ville = t_ville.getText();
+        contact = t_contact.getText();
+        
         idMax += 1; //  increment id de la table
           
         try {
@@ -152,7 +158,7 @@ public class FXMLController implements Initializable {
         t_contact.clear();alertContact.setText("");t_contact.setStyle("-fx-border-color: black;");
     }
     
-    
+
     @FXML
     private void nom_change(KeyEvent event) {
            
@@ -161,7 +167,7 @@ public class FXMLController implements Initializable {
         Matcher resu = test.matcher(t_nom.getText());
         
         if(!t_nom.getText().isEmpty()){
-            if(resu.find()){
+            if(resu.find()){                
                 t_nom.setStyle("-fx-border-color: green;");    
                 alertNom.setText("");
                 nom = t_nom.getText();
@@ -169,7 +175,7 @@ public class FXMLController implements Initializable {
                 t_nom.setStyle("-fx-border-color: red;");
                 alertNom.setText("Saisie incorrecte");
                 alertNom.setStyle("-fx-text-fill: red;");
-            }
+            } 
         }
         else{
             t_nom.setStyle("-fx-border-color: red;");
@@ -177,6 +183,7 @@ public class FXMLController implements Initializable {
             alertNom.setStyle("-fx-text-fill: red;");
         }
     }
+
 
     @FXML
     private void rue_change(KeyEvent event) {
@@ -189,7 +196,7 @@ public class FXMLController implements Initializable {
             if(resu.find()){
                 t_rue.setStyle("-fx-border-color: green;");    
                 alertRue.setText("");
-                rue = t_rue.getText();
+                
             }else {
                 t_rue.setStyle("-fx-border-color: red;");
                 alertRue.setText("Saisie incorrecte");
@@ -203,6 +210,7 @@ public class FXMLController implements Initializable {
         }      
     }
 
+
     @FXML
     private void cp_change(KeyEvent event) {
         
@@ -214,7 +222,7 @@ public class FXMLController implements Initializable {
             if(resu.find()){
                 t_cp.setStyle("-fx-border-color: green;");    
                 alertCp.setText("");
-                cp = t_cp.getText();
+                
             }else {
                 t_cp.setStyle("-fx-border-color: red;");
                 alertCp.setText("Saisie incorrecte");
@@ -239,7 +247,7 @@ public class FXMLController implements Initializable {
             if(resu.find()){
                 t_ville.setStyle("-fx-border-color: green;");    
                 alertVille.setText("");
-                ville = t_ville.getText();
+                
             }else {
                 t_ville.setStyle("-fx-border-color: red;");
                 alertVille.setText("Saisie incorrecte");
@@ -253,6 +261,7 @@ public class FXMLController implements Initializable {
         }
     }
 
+
     @FXML
     private void contact_change(KeyEvent event) {
         
@@ -264,7 +273,7 @@ public class FXMLController implements Initializable {
             if(resu.find()){
                 t_contact.setStyle("-fx-border-color: green;");    
                 alertContact.setText("");
-                contact = t_contact.getText();
+                
             }else {
                 t_contact.setStyle("-fx-border-color: red;");
                 alertContact.setText("Saisie incorrecte");
@@ -277,5 +286,6 @@ public class FXMLController implements Initializable {
             alertContact.setStyle("-fx-text-fill: red;");
         }
         
-    } 
+    }
+
 }  
