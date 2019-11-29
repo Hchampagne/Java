@@ -103,7 +103,7 @@ public class ViewController implements Initializable {
         nomf = choix.getValue();
         System.out.println(nomf);
         
-        // recupo n°forunissuer fct nom fournisseur table forunis colonne numfou                        
+        // recup n°forunissuer fct nom fournisseur table forunis colonne numfou                        
         try {
             fourn = con.prepareStatement("Select numfou FROM fournis WHERE nomfou = ?");
             fourn.setString(1, nomf);
@@ -114,7 +114,7 @@ public class ViewController implements Initializable {
                  System.out.println(numf);
             }                      
         } catch (SQLException ex) {
-            //échec
+            
         }   
         
         try { 
@@ -124,13 +124,15 @@ public class ViewController implements Initializable {
             cmd.setInt(1,numf);
             commande = cmd.executeQuery();
             
+            //pour affichage fournisseur
             line = nomf + "\n";
-             
-            while(commande.next()){
+            
+            //affichage commande(s)
+            while(commande.next()){ //recup valeurs de la table
                 int numc = commande.getInt("numcom");
                 String datc = commande.getString("datcom");
                 String obsc = commande.getString("obscom");
-                
+                //mis en forme affichage
                 line += (numc + "  " + datc + "  " + obsc)+"\n";  // concatenation pour affichage
                 affiche.setText(line);  
                 

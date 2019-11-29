@@ -38,5 +38,6 @@
       <Label fx:id="alertCp" layoutX="172.0" layoutY="291.0" />
       <Label fx:id="alertVille" layoutX="348.0" layoutY="291.0" />
       <Label fx:id="alertContact" layoutX="172.0" layoutY="353.0" />
+      <Label fx:id="aff_error" layoutX="247.0" layoutY="439.0" />
    </children>
 </AnchorPane>
