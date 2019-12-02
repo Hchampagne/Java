@@ -101,9 +101,8 @@ public class ViewController implements Initializable {
         
         // recup valeur du comboBox
         nomf = choix.getValue();
-        System.out.println(nomf);
         
-        // recup n°forunissuer fct nom fournisseur table forunis colonne numfou                        
+        // recup n° fct du nom du fournisseur table forunis colonne numfou                        
         try {
             fourn = con.prepareStatement("Select numfou FROM fournis WHERE nomfou = ?");
             fourn.setString(1, nomf);
@@ -124,18 +123,18 @@ public class ViewController implements Initializable {
             cmd.setInt(1,numf);
             commande = cmd.executeQuery();
             
-            //pour affichage fournisseur
+            //pour affichage fournisseur (écrase valeurs précédentes)
             line = nomf + "\n";
+            affiche.setText(line);
             
             //affichage commande(s)
             while(commande.next()){ //recup valeurs de la table
                 int numc = commande.getInt("numcom");
                 String datc = commande.getString("datcom");
                 String obsc = commande.getString("obscom");
-                //mis en forme affichage
-                line += (numc + "  " + datc + "  " + obsc)+"\n";  // concatenation pour affichage
-                affiche.setText(line);  
                 
+                //mis en forme affichage                 
+                affiche.appendText(numc + "  " + datc + "  " + obsc + "\n");               
             }          
         } catch (SQLException ex) {
             //échec

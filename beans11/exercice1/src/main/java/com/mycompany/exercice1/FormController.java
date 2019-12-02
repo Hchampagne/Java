@@ -43,23 +43,21 @@ public class FormController implements Initializable {
     private Label affiche;
     @FXML
     private TextField entree;
-        
-  
-    String code;
+    @FXML
+    private Label er_fournis;    
     
-    
+    //def pour requtete
     PreparedStatement res;
     Connection con;
     ResultSet result;
-    @FXML
-    private Label er_fournis;
-    
-    
+   
+ 
     /**
      * Initializes the controller class.
      * @param url
      * @param rb
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     // param de connexion   
@@ -84,17 +82,20 @@ public class FormController implements Initializable {
     private void select(ActionEvent event) {
         
         // string to int le n° fournisseur
-        code = entree.getText();
-        int codeInt = Integer.valueOf(code);       
+        String code = entree.getText();
+              
         try {
             // exectue la requete 
-            res = con.prepareStatement("SELECT * FROM fournis WHERE numfou = ?");
-            res.setInt(1, codeInt);
+            res = con.prepareStatement("SELECT * FROM fournis WHERE numfou = ?");            
+            res.setString(1,code);
             result = res.executeQuery();
+            
                 //recup et affiche les données
                 if (result.next()) {
+                    // efface message erreur sur fournisseur
                     er_fournis.setText("");
                     
+                    //affiche les données 
                     nom.setText(result.getString("nomfou"));
                     adresse.setText(result.getString("ruefou"));
                     cp.setText(result.getString("posfou"));
