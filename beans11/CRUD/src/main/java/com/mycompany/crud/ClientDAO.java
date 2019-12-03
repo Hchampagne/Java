@@ -99,8 +99,7 @@ public class ClientDAO {
         try {
             con = DriverManager.getConnection(url_db, "root", "");
             PreparedStatement mod = con.prepareStatement("UPDATE client SET cli_nom = ?, cli_prenom = ?, cli_ville = ?  WHERE cli_id = ?");
-            
-            
+                      
             mod.setString(1, cli.getNom());
             mod.setString(2, cli.getPrenom());
             mod.setString(3, cli.getVille());
@@ -120,33 +119,36 @@ public class ClientDAO {
     //Détail
     public Client Find(int id){
         
-        System.out.println("id pour détail : " + id);
+        ///System.out.println("id pour détail : " + id);
          
         String url_db ="jdbc:mysql://localhost:3306/hotel?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
         Connection con;
-        
+        ResultSet select;
+        Client row = new Client();    
         try {
             con = DriverManager.getConnection(url_db, "root", "");
-            PreparedStatement sel = con.prepareStatement("SELECT cli_nom, cli_prenom, cli_ville FROM client WHERE cli_id = ?");  
-            sel.setInt(1, id);
-            ResultSet select = sel.executeQuery();
+            PreparedStatement sel = con.prepareStatement("SELECT cli_id, cli_nom, cli_prenom, cli_ville FROM client WHERE cli_id = ?"); 
+                sel.setInt(1, id);
+                select = sel.executeQuery(); 
+                
+                while(select.next()){                    
+                    row.setId(select.getInt("cli_id"));
+                    row.setNom(select.getString("cli_nom"));
+                    row.setPrenom(select.getString("cli_prenom"));
+                    row.setVille(select.getString("cli_ville"));
+                                       
+                    //System.out.println("nom : " + (select.getString("cli_nom")));
+                    //System.out.println("nom : " + (select.getString("cli_prenom")));
+                    //System.out.println("nom : " + (select.getString("cli_ville")));                               
+                }
             
-            while(select.next()){
-                System.out.println("nom : " + (select.getString("cli_nom")));
-                System.out.println("nom : " + (select.getString("cli_prenom")));
-                System.out.println("nom : " + (select.getString("cli_ville")));
-            }  
-                                
-            sel.close();
             con.close(); 
             
         } catch (SQLException e) {
             System.out.println("Error while finding entity 'client'");
             System.out.println(e.getMessage());
         }
-        
-        return ;
-        
+      return row; 
     }
     
     
@@ -163,13 +165,15 @@ public class ClientDAO {
       
        ClientDAO ins = new ClientDAO();
        ins.Insert(insert);
-       
+           
        //liste
         ClientDAO liste = new ClientDAO();
+        
         liste.List().forEach((c) -> {
             System.out.println(c.id + "  " + c.nom + "  " + c.prenom +"  " + c.ville);
         });
         
+      
         //Suppression
         Client suppr = new Client();
         suppr.id = 16;
@@ -188,17 +192,17 @@ public class ClientDAO {
         update.Update(up);
 
         */
+       
         //detail  
         int fi = 3;
         ClientDAO find = new ClientDAO();
         find.Find(fi);
         
         
-        
-       
-           
-        
-        
-        
-    }
-}
+      
+      
+        }
+      
+        }           
+    
+
