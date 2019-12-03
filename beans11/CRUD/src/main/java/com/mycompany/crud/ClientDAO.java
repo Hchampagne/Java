@@ -181,28 +181,26 @@ public class ClientDAO {
         ClientDAO del = new ClientDAO();
         del.Delete(suppr);
         
-        //modifier
+        //modifier 
         Client up = new Client();
         up.id = 1;
         up.nom = "Lebowski";
         up.prenom = "Jf";
         up.ville = "new york";
         
-        ClientDAO update = new ClientDAO();
+        ClientDAO update = new ClientDAO(); 
         update.Update(up);
 
         */
        
         //detail  
-        int fi = 3;
+        int fi = 12;
         ClientDAO find = new ClientDAO();
-        find.Find(fi);
-        
-        
-      
-      
+        Client row = find.Find(fi);
+         
+        System.out.println(row.id + "  " + row.nom + "  " + row.prenom + "  " + row.ville);     
         }
       
-        }           
+    }           
     
 
