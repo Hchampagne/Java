@@ -8,9 +8,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="437.0" prefWidth="1037.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.crud_proj.ViewController">
+<AnchorPane id="AnchorPane" prefHeight="437.0" prefWidth="1037.0" style="-fx-background-color: grey;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.crud_proj.ViewController">
     <stylesheets>
         <URL value="@/styles/view.css" />
     </stylesheets>
@@ -30,12 +31,12 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutY="49.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="85.0" text="Modifier">
+            <Button fx:id="modif" layoutY="49.0" mnemonicParsing="false" onAction="#click_modif" prefHeight="30.0" prefWidth="85.0" text="Modifier">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutY="102.0" mnemonicParsing="false" text="Supprimer">
+            <Button fx:id="suppr" layoutY="102.0" mnemonicParsing="false" onAction="#click_supr" text="Supprimer">
                <font>
                   <Font size="14.0" />
                </font>
@@ -44,17 +45,17 @@
       </Group>
       <Group layoutX="676.0" layoutY="95.0">
          <children>
-            <TextField layoutX="47.0" prefHeight="25.0" prefWidth="252.0">
+            <TextField fx:id="t_nom" layoutX="47.0" prefHeight="25.0" prefWidth="252.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField layoutX="47.0" layoutY="53.0" prefHeight="25.0" prefWidth="252.0">
+            <TextField fx:id="t_prenom" layoutX="47.0" layoutY="53.0" prefHeight="25.0" prefWidth="252.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField layoutX="47.0" layoutY="105.0" prefHeight="25.0" prefWidth="252.0">
+            <TextField fx:id="t_ville" layoutX="47.0" layoutY="105.0" prefHeight="25.0" prefWidth="252.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -74,10 +75,11 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="774.0" layoutY="278.0" mnemonicParsing="false" text="Annuler">
+      <Button fx:id="annuler" layoutX="774.0" layoutY="278.0" mnemonicParsing="false" onAction="#click_annuler" text="Annuler">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
+      <Pane fx:id="cache" layoutX="657.0" layoutY="14.0" prefHeight="394.0" prefWidth="371.0" style="-fx-background-color: green;" />
    </children>
 </AnchorPane>

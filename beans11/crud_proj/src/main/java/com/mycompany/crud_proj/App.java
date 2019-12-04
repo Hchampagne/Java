@@ -17,6 +17,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+         stage.setTitle("Table clients");
         scene = new Scene(loadFXML("view"));
         stage.setScene(scene);
         stage.show();
