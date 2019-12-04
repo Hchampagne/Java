@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="947.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.mycompany.crud.VueController">
+    <stylesheets>
+        <URL value="@vue.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="tableview" layoutX="10.0" layoutY="17.0" prefHeight="609.0" prefWidth="394.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+        <columns>
+          <TableColumn prefWidth="123.0" text="t_nom" />
+          <TableColumn prefWidth="131.0" text="t_prenom" />
+            <TableColumn prefWidth="143.0" text="t_ville" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -30,6 +30,7 @@ import javax.swing.JOptionPane;
  *
  * @author Doudou
  */
+
 @SuppressWarnings("empty-statement")
 public class FXMLController implements Initializable {
     
