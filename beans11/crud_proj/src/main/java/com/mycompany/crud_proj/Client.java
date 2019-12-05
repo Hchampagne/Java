@@ -11,7 +11,7 @@ package com.mycompany.crud_proj;
  */
 public class Client {
     
-    //public int cli_id;
+    //champs de la classe <=> aux colonnes de la table
     public int id;
     public String nom;
     public String prenom;
@@ -19,7 +19,10 @@ public class Client {
     public String ville;
     
     public Client(){
-}
+    //constructeur defaut
+    }
+    
+    //constructeur
     public Client(int id, String n, String p, String a, String v){
         this.id = id;
         this.nom = n;
@@ -28,6 +31,7 @@ public class Client {
         this.ville = v;             
     }
 
+    //getters et setters
     public int getId() {
         return id;
     }

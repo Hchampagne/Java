@@ -173,18 +173,18 @@ public class ViewController implements Initializable {
                 insert.ville = t_ville.getText();
                 
                 if(!"".equals(t_nom.getText())  && !"".equals(t_prenom.getText()) && !"".equals(t_ville.getText())){
-                // les champs ne sont pas vide
-                // instancie classe dao et insert base de donnée
-                ClientDAO ins = new ClientDAO();
-                ins.Insert(insert);
-                //actualise la liste
-                actual();
+                    // les champs ne sont pas vide
+                    // instancie classe dao et insert base de donnée
+                    ClientDAO ins = new ClientDAO();
+                    ins.Insert(insert);
+                    //actualise la liste
+                    actual();
                 }else{
-                   //les champs sont vide => popup  message erreur
-                   Alert alert = new Alert(AlertType.ERROR);
-                   alert.setHeaderText("Ajout à la base");
-                   alert.setContentText("Attention champs vide(s) ! ");
-                   alert.show();
+                    //les champs sont vide => popup  message erreur
+                     Alert alert = new Alert(AlertType.ERROR);
+                     alert.setHeaderText("Ajout à la base");
+                     alert.setContentText("Attention champs vide(s) ! ");
+                     alert.show();
                 }
                 
                 break ;
@@ -198,18 +198,18 @@ public class ViewController implements Initializable {
                 up.ville = t_ville.getText(); 
                 
                 if(!"".equals(t_nom.getText())  && !"".equals(t_prenom.getText()) && !"".equals(t_ville.getText())){
-                // les champs ne sont pas vide
-                // instancie classe dao et update base de donnée   
-                ClientDAO update = new ClientDAO(); 
-                update.Update(up);
-                //actualise la liste
-                actual();
+                    // les champs ne sont pas vide
+                    // instancie classe dao et update base de donnée   
+                    ClientDAO update = new ClientDAO(); 
+                    update.Update(up);
+                    //actualise la liste
+                    actual();
                 }else{
-                   //les champs sont vide => popup  message erreur
-                   Alert alert = new Alert(AlertType.ERROR);
-                   alert.setHeaderText("Modification de la base");
-                   alert.setContentText("Attention champs vide(s) ! ");
-                   alert.show();
+                    //les champs sont vide => popup  message erreur
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setHeaderText("Modification de la base");
+                    alert.setContentText("Attention champs vide(s) ! ");
+                     alert.show();
                 }
                 break;
             
