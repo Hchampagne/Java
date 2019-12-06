@@ -45,17 +45,17 @@
       </Group>
       <Group layoutX="676.0" layoutY="95.0">
          <children>
-            <TextField fx:id="t_nom" layoutX="47.0" prefHeight="25.0" prefWidth="252.0">
+            <TextField fx:id="t_nom" layoutX="47.0" onKeyTyped="#nom_test" prefHeight="25.0" prefWidth="252.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="t_prenom" layoutX="47.0" layoutY="53.0" prefHeight="25.0" prefWidth="252.0">
+            <TextField fx:id="t_prenom" layoutX="47.0" layoutY="53.0" onKeyTyped="#prenom_test" prefHeight="25.0" prefWidth="252.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="t_ville" layoutX="47.0" layoutY="105.0" prefHeight="25.0" prefWidth="252.0">
+            <TextField fx:id="t_ville" layoutX="47.0" layoutY="105.0" onKeyTyped="#ville_test" prefHeight="25.0" prefWidth="252.0">
                <font>
                   <Font size="14.0" />
                </font>

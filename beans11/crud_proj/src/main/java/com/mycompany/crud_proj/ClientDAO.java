@@ -7,7 +7,6 @@ package com.mycompany.crud_proj;
 
 import java.sql.Statement;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,10 +23,15 @@ import javafx.scene.control.Alert.AlertType;
 public class ClientDAO {
     
     //param connexion db
-    String url_db = "jdbc:mysql://localhost:3306/hotel?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
-    String login ="root";
-    String mdp = ""; 
-       
+    private static Connection con = null;
+    private static ResultSet result = null;
+    private static Statement stm = null;
+    private static PreparedStatement Pstm = null;
+    private static PreparedStatement del = null;
+    private static PreparedStatement mod = null;
+    private static ResultSet select = null;
+    
+    
     public ClientDAO() {
         //constructeur defaut
     }
@@ -36,12 +40,9 @@ public class ClientDAO {
     public List<Client> List() {
         // instaciation arraylist
         List<Client> resultat = new ArrayList<>();       
-        // connexion db
-        Connection con ;
-        ResultSet result;
-        Statement stm;
+              
             try{ //connexion db et statement
-                con = DriverManager.getConnection(url_db,login, mdp);              
+                con = Connect.getConnection();
                 stm = con.createStatement();
                 result = stm.executeQuery("SELECT * FROM client");
                 // lecture et objet Client
@@ -54,7 +55,8 @@ public class ClientDAO {
                     resultat.add(c); // addition des objet client dans arraylist
                 }               
                 result.close();//close statement
-                con.close();   //close connexion       
+                con.close();   //close connexion   
+                
             } catch (SQLException e) {
                 //popup alert erreur
                 Alert alert = new Alert(AlertType.ERROR);
@@ -67,19 +69,16 @@ public class ClientDAO {
 
     //Ajout
     public void Insert(Client cli) {
-        //param connexion bd
-        Connection con;
-        PreparedStatement stm;
-        
+              
             try {//connexion bd requete preparée
-                con = DriverManager.getConnection(url_db,login, mdp);  
-                stm = con.prepareStatement("INSERT INTO client (cli_nom, cli_prenom, cli_ville) VALUES (?,?,?)");
+                con = Connect.getConnection(); 
+                Pstm = con.prepareStatement("INSERT INTO client (cli_nom, cli_prenom, cli_ville) VALUES (?,?,?)");
                 //liaison variable position requete
-                stm.setString(1, cli.getNom());
-                stm.setString(2, cli.getPrenom());
-                stm.setString(3, cli.getVille());
+                Pstm.setString(1, cli.getNom());
+                Pstm.setString(2, cli.getPrenom());
+                Pstm.setString(3, cli.getVille());
                 // execution de la requete
-                stm.execute();
+                Pstm.execute();
                 //popup insert réussi
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setHeaderText("AJOUT");
@@ -88,8 +87,7 @@ public class ClientDAO {
                 //fermeture statement et connexion bd
                 con.close();
                 stm.close();
-            
-
+        
             } catch (SQLException e) {
                 //popup si erreur
                 Alert alert = new Alert(AlertType.ERROR);
@@ -101,13 +99,10 @@ public class ClientDAO {
 
     //Suppression
     public void Delete(Client cli) {
-        // param connexion
-        Connection con ;
-        PreparedStatement del ;
-        
+             
         try {
-            //connexion bd et requete preparée
-            con = DriverManager.getConnection(url_db,login, mdp);  
+            //connexion bd classe Connect et requete preparée
+            con = Connect.getConnection(); 
             del = con.prepareStatement("DELETE FROM client WHERE cli_id = ?");
             //liaison variable position requete
             del.setInt(1, cli.getId());
@@ -133,13 +128,10 @@ public class ClientDAO {
 
     //Modification
     public void Update(Client cli) {
-        //param connexion
-        Connection con;
-        PreparedStatement mod ;
         
         try {
             //connexion et re requete preparée
-            con = DriverManager.getConnection(url_db,login, mdp);  
+            con = Connect.getConnection(); 
             mod = con.prepareStatement("UPDATE client SET cli_nom = ?, cli_prenom = ?, cli_ville = ?  WHERE cli_id = ?");
             //liaison variable position requete
             mod.setString(1, cli.getNom());
@@ -166,20 +158,16 @@ public class ClientDAO {
             alert.show();   
         }
     }
-        
-
+       
     //Détail
     public Client Find(int id) {
-        //param connexion
-        Connection con;
-        ResultSet select;
         
         //instanciation de la classe client
         Client row = new Client();
         
         try {
             //connexion et re requete preparé
-            con = DriverManager.getConnection(url_db,login, mdp);  
+            con = Connect.getConnection(); 
             PreparedStatement sel = con.prepareStatement("SELECT cli_id, cli_nom, cli_prenom, cli_ville FROM client WHERE cli_id = ?");
             //liaison variable position requete
             sel.setInt(1, id);

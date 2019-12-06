@@ -168,29 +168,7 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void nom_change(KeyEvent event) {
-        aff_error.setText("");  
-        String pattern = "^[A-Za-z0-9 éèçêë]+$";
-        Pattern test = Pattern.compile(pattern);
-        Matcher resu = test.matcher(t_nom.getText());
-        
-        if(!t_nom.getText().isEmpty()){
-            if(resu.find()){                
-                t_nom.setStyle("-fx-border-color: green;");    
-                alertNom.setText("");
-                error[0] = "";
-            }else {
-                error[0] = "error";
-                t_nom.setStyle("-fx-border-color: red;");
-                alertNom.setText("Saisie incorrecte");
-                alertNom.setStyle("-fx-text-fill: red;");
-            } 
-        }
-        else{
-            error[0] = "error";
-            t_nom.setStyle("-fx-border-color: red;");
-            alertNom.setText("champs vide");
-            alertNom.setStyle("-fx-text-fill: red;");
-        }
+    
     }
 
     @FXML

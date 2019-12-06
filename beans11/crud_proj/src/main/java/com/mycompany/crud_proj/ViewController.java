@@ -8,6 +8,8 @@ package com.mycompany.crud_proj;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
@@ -75,11 +78,7 @@ public class ViewController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
-       
-        
-        
+             
         //instancie classe ClientDAO
         ClientDAO liste = new ClientDAO();        
         // recup le return dans model
@@ -159,7 +158,6 @@ public class ViewController implements Initializable {
         textview();      
     }
    
-
     @FXML
     private void click_ok(ActionEvent event) {
         
@@ -209,7 +207,7 @@ public class ViewController implements Initializable {
                     Alert alert = new Alert(AlertType.ERROR);
                     alert.setHeaderText("Modification de la base");
                     alert.setContentText("Attention champs vide(s) ! ");
-                     alert.show();
+                    alert.show();
                 }
                 break;
             
@@ -225,8 +223,7 @@ public class ViewController implements Initializable {
                 actual();
                 break ;
                 
-            default :  break ;
-        
+            default :  break ;      
         }           
     }
     
@@ -276,10 +273,85 @@ public class ViewController implements Initializable {
             t_nom.clear();
             t_prenom.clear();
             t_ville.clear();       
-        }
+        }       
+    }
+
+    @FXML
+    private void nom_test(KeyEvent event) {
+               
+        String pattern = "^[A-Z][A-Za-z0-9 éèçêë]+$";
+        Pattern test = Pattern.compile(pattern);
+        Matcher resu = test.matcher(t_nom.getText());
         
+        if(!t_nom.getText().isEmpty()){
+            if(resu.find()){                
+                t_nom.setStyle("-fx-border-color: green;");
+                ok.setDisable(false);
+                //good             
+            }else {               
+                t_nom.setStyle("-fx-border-color: red;");
+                ok.setDisable(true);
+              // pas good regex
+            } 
+        }
+        else{           
+            t_nom.setStyle("-fx-border-color: red;");
+            ok.setDisable(true);
+           //pas good vide
+        }
+    }
+
+    @FXML
+    private void prenom_test(KeyEvent event) {
+        
+        String pattern = "^[A-Z][A-Za-z0-9 éèçêë]+$";
+        Pattern test = Pattern.compile(pattern);
+        Matcher resu = test.matcher(t_prenom.getText());
+        
+        if(!t_prenom.getText().isEmpty()){
+            if(resu.find()){                
+                t_prenom.setStyle("-fx-border-color: green;");
+                ok.setDisable(false);
+                //good             
+            }else {               
+                t_prenom.setStyle("-fx-border-color: red;");
+                ok.setDisable(true);
+              // pas good regex
+            } 
+        }
+        else{           
+            t_prenom.setStyle("-fx-border-color: red;");
+            ok.setDisable(true);
+           //pas good vide    
+        }
+    }
+
+    @FXML
+    private void ville_test(KeyEvent event) {
+        
+        String pattern = "^[A-Z][A-Za-z0-9 éèçêë]+$";
+        Pattern test = Pattern.compile(pattern);
+        Matcher resu = test.matcher(t_ville.getText());
+        
+        if(!t_ville.getText().isEmpty()){
+            if(resu.find()){                
+                t_ville.setStyle("-fx-border-color: green;");
+                ok.setDisable(false);
+                //good             
+            }else {               
+                t_ville.setStyle("-fx-border-color: red;");
+                ok.setDisable(true);
+              // pas good regex
+            } 
+        }
+        else{           
+            t_ville.setStyle("-fx-border-color: red;");
+            ok.setDisable(true);
+           //pas good vide
+        }
     }
     }
+
 
    
     
