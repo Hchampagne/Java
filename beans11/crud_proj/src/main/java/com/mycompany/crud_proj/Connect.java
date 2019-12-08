@@ -34,10 +34,8 @@ public class Connect {
             alert.setHeaderText("Erreur connection à la base");
             alert.setContentText(ex.getMessage());
             alert.show();          
-        }
-        
+        }       
         // retourne la connexion
         return con;
-    
-    }
+    }    
 }

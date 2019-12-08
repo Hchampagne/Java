@@ -37,6 +37,7 @@ public class ViewController implements Initializable {
     int index ;
     int id ;
     String role ;
+    String champs ;
     
 
     @FXML
@@ -69,6 +70,8 @@ public class ViewController implements Initializable {
     private Button supprimer;
     @FXML
     private Label mess_error;
+    @FXML
+    private Button effacer;
 
     /**
      * Initializes the controller class.
@@ -278,6 +281,8 @@ public class ViewController implements Initializable {
 
     @FXML
     private void nom_test(KeyEvent event) {
+        
+        champs = "nom";
                
         String pattern = "^[A-Z][A-Za-z0-9 éèçêë]+$";
         Pattern test = Pattern.compile(pattern);
@@ -304,6 +309,8 @@ public class ViewController implements Initializable {
     @FXML
     private void prenom_test(KeyEvent event) {
         
+        champs = "prenom";
+        
         String pattern = "^[A-Z][A-Za-z0-9 éèçêë]+$";
         Pattern test = Pattern.compile(pattern);
         Matcher resu = test.matcher(t_prenom.getText());
@@ -329,6 +336,8 @@ public class ViewController implements Initializable {
     @FXML
     private void ville_test(KeyEvent event) {
         
+        champs = "ville";
+        
         String pattern = "^[A-Z][A-Za-z0-9 éèçêë]+$";
         Pattern test = Pattern.compile(pattern);
         Matcher resu = test.matcher(t_ville.getText());
@@ -348,6 +357,27 @@ public class ViewController implements Initializable {
             t_ville.setStyle("-fx-border-color: red;");
             ok.setDisable(true);
            //pas good vide
+        }
+    }
+
+    @FXML
+    private void click_effacer(ActionEvent event) {       
+        
+        if(null == champs){champs = "";}
+        else // efface saisie en cours
+        switch (champs) {
+            case "nom":
+                t_nom.setText("");
+                break;
+            case "prenom":
+                t_prenom.setText("");
+                break;
+            case "ville":
+                t_ville.setText("");
+                break;
+            default:
+                champs = "";
+                break;
         }
     }
     }
