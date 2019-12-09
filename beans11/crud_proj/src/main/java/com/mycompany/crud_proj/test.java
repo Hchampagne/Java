@@ -35,7 +35,7 @@ public class test {
         Matcher resu = test.matcher(champs);
         //test champs vide
         if(!"".equals(champs)){vide = true;}
-        // test entrez valide 
+        // test entrez valide champs vide et regex
         boolean res = resu.find() && vide;
         // retourne booléen true si ok     
         return res;           

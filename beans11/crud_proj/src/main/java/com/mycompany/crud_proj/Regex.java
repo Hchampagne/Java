@@ -11,9 +11,13 @@ package com.mycompany.crud_proj;
  */
 public class Regex {
     
-    public String set;
+    private  String set;
     
-    private static String regNom ;
+    private static String regNom = "^[A-Z][A-Za-z0-9 éèçêë]+$";
+    private static String regPrenom = "^[A-Z][A-Za-z0-9 éèçêë]+$";
+    private static String regVille = "^[A-Z][A-Za-z0-9 éèçêë]+$";
+    
+    private static String result;
     
     public Regex(){
         //default
@@ -24,17 +28,13 @@ public class Regex {
     }
     
     public static String regset(String set){
-        
-       if ("regNom".equals(set)){ regNom = "^[A-Z][A-Za-z0-9 éèçêë]+$"; }
-        
-        
-        
-        
-        
-        return regNom;
+       
+       if ("regNom".equals(set)){result = regNom;}
+       if ("regPrenom".equals(set)){result = regPrenom;}       
+       if ("regVille".equals(set)){result = regVille;} 
+       
+       return result;
     }
-    
-    
 
     public String getSet() {
         return set;
@@ -42,13 +42,5 @@ public class Regex {
 
     public void setSet(String set) {
         this.set = set;
-    }
-    
-    
-
-    
-    
-    
-    
-                
+    }                 
 }

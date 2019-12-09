@@ -36,11 +36,7 @@ public class ViewController implements Initializable {
     int id ;
     String role ;
     String champs ;
-    
-   // String regNom = "^[A-Z][A-Za-z0-9 éèçêë]+$";
-    String regPrenom = "^[A-Z][A-Za-z0-9 éèçêë]+$";
-    String regVille = "^[A-Z][A-Za-z0-9 éèçêë]+$";
-    
+      
     boolean n1 = false;
     boolean n2 = false;
     boolean n3 = false;
@@ -189,10 +185,9 @@ public class ViewController implements Initializable {
                     //les champs sont vide => popup  message erreur
                      Alert alert = new Alert(AlertType.ERROR);
                      alert.setHeaderText("Ajout à la base");
-                     alert.setContentText("Siasie incorrecte ! ");
+                     alert.setContentText("Saisie incorrecte ! ");
                      alert.show();
-                }
-                
+                }               
                 break ;
                 
             case "mod" : 
@@ -235,7 +230,7 @@ public class ViewController implements Initializable {
         }           
     }
     
-    public void actual(){
+    public void actual(){ //rafraichit la liste
            
         //instancie classe ClientDAO
         ClientDAO liste = new ClientDAO();        
@@ -247,7 +242,7 @@ public class ViewController implements Initializable {
         tableview.setItems(mod); 
     }
     
-    public void textview(){
+    public void textview(){ // 
         
         if (!"".equals(role)){ //si appuie bouton annuler =>else
         
@@ -258,12 +253,12 @@ public class ViewController implements Initializable {
         ClientDAO find = new ClientDAO();
         Client row = find.Find(id);
         
-        // garni les textview et les rend non modifiable
+        // garni les textview 
         t_nom.setText(row.nom);
         t_prenom.setText(row.prenom);
         t_ville.setText(row.ville);
         
-        // disable les chmaps textview pour role = mod
+        // disable les champs textview pour role = delete
         if("del".equals(role)){t_nom.setDisable(true);}else{t_nom.setDisable(false);}
         if("del".equals(role)){t_prenom.setDisable(true);}else{t_prenom.setDisable(false);}
         if("del".equals(role)){t_ville.setDisable(true);}else{t_ville.setDisable(false);}
@@ -279,8 +274,11 @@ public class ViewController implements Initializable {
             
             //clear textview
             t_nom.clear();
+            t_nom.setStyle("-fx-border-color: default;");
             t_prenom.clear();
-            t_ville.clear();       
+            t_prenom.setStyle("-fx-border-color: default;");
+            t_ville.clear();
+            t_ville.setStyle("-fx-border-color: default;");
         }       
     }
 
@@ -291,8 +289,7 @@ public class ViewController implements Initializable {
         champs = "nom"; 
         
         //obtient de la classe regex la regex du champs
-        String regNom = Regex.regset("regNom");       
-        System.out.println(regNom);
+        String regNom = Regex.regset("regNom");           
         
         // de la classe test obtient resultat regex et champs vide     
         n1 =  test.testreg(regNom, t_nom.getText());
@@ -311,7 +308,10 @@ public class ViewController implements Initializable {
     private void prenom_test(KeyEvent event) {  //test champ prenom si action
         
        champs = "prenom";
-        
+       
+       //obtient de la classe regex la regex du champs
+        String regPrenom = Regex.regset("regNom");       
+             
        n2 =  test.testreg(regPrenom, t_prenom.getText());
        
        if(n2){
@@ -328,6 +328,9 @@ public class ViewController implements Initializable {
         
         champs = "ville";
         
+        //obtient de la classe regex la regex du champs
+        String regVille = Regex.regset("regNom");       
+             
         n3 =  test.testreg(regVille, t_ville.getText());
        
         if(n3){
@@ -347,12 +350,15 @@ public class ViewController implements Initializable {
         switch (champs) {
             case "nom":
                 t_nom.setText("");
+                t_nom.setStyle("-fx-border-color: default;");
                 break;
             case "prenom":
                 t_prenom.setText("");
+                t_prenom.setStyle("-fx-border-color: default;");
                 break;
             case "ville":
                 t_ville.setText("");
+                t_ville.setStyle("-fx-border-color: default;");
                 break;
             default:
                 champs = "";
