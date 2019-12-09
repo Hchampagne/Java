@@ -8,8 +8,6 @@ package com.mycompany.crud_proj;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,6 +37,13 @@ public class ViewController implements Initializable {
     String role ;
     String champs ;
     
+   // String regNom = "^[A-Z][A-Za-z0-9 éèçêë]+$";
+    String regPrenom = "^[A-Z][A-Za-z0-9 éèçêë]+$";
+    String regVille = "^[A-Z][A-Za-z0-9 éèçêë]+$";
+    
+    boolean n1 = false;
+    boolean n2 = false;
+    boolean n3 = false;
 
     @FXML
     private TableColumn<Client, String> c_id;
@@ -173,8 +178,8 @@ public class ViewController implements Initializable {
                 insert.prenom = t_prenom.getText();
                 insert.ville = t_ville.getText();
                 
-                if(!"".equals(t_nom.getText())  && !"".equals(t_prenom.getText()) && !"".equals(t_ville.getText())){
-                    // les champs ne sont pas vide
+                if(n1 && n2 && n3){
+                    // les champs ne sont pas ok regex ou vide
                     // instancie classe dao et insert base de donnée
                     ClientDAO ins = new ClientDAO();
                     ins.Insert(insert);
@@ -184,7 +189,7 @@ public class ViewController implements Initializable {
                     //les champs sont vide => popup  message erreur
                      Alert alert = new Alert(AlertType.ERROR);
                      alert.setHeaderText("Ajout à la base");
-                     alert.setContentText("Attention champs vide(s) ! ");
+                     alert.setContentText("Siasie incorrecte ! ");
                      alert.show();
                 }
                 
@@ -198,7 +203,7 @@ public class ViewController implements Initializable {
                 up.prenom = t_prenom.getText();
                 up.ville = t_ville.getText(); 
                 
-                if(!"".equals(t_nom.getText())  && !"".equals(t_prenom.getText()) && !"".equals(t_ville.getText())){
+                if(n1 && n2 && n3){
                     // les champs ne sont pas vide
                     // instancie classe dao et update base de donnée   
                     ClientDAO update = new ClientDAO(); 
@@ -209,7 +214,7 @@ public class ViewController implements Initializable {
                     //les champs sont vide => popup  message erreur
                     Alert alert = new Alert(AlertType.ERROR);
                     alert.setHeaderText("Modification de la base");
-                    alert.setContentText("Attention champs vide(s) ! ");
+                    alert.setContentText("Saisie incorrecte ! ");
                     alert.show();
                 }
                 break;
@@ -258,7 +263,7 @@ public class ViewController implements Initializable {
         t_prenom.setText(row.prenom);
         t_ville.setText(row.ville);
         
-        // disable les chmaps textview pour role=mod
+        // disable les chmaps textview pour role = mod
         if("del".equals(role)){t_nom.setDisable(true);}else{t_nom.setDisable(false);}
         if("del".equals(role)){t_prenom.setDisable(true);}else{t_prenom.setDisable(false);}
         if("del".equals(role)){t_ville.setDisable(true);}else{t_ville.setDisable(false);}
@@ -280,84 +285,58 @@ public class ViewController implements Initializable {
     }
 
     @FXML
-    private void nom_test(KeyEvent event) {
+    private void nom_test(KeyEvent event) {  // champs nom si action
         
-        champs = "nom";
-               
-        String pattern = "^[A-Z][A-Za-z0-9 éèçêë]+$";
-        Pattern test = Pattern.compile(pattern);
-        Matcher resu = test.matcher(t_nom.getText());
+        //variable pour fct efface
+        champs = "nom"; 
         
-        if(!t_nom.getText().isEmpty()){
-            if(resu.find()){                
-                t_nom.setStyle("-fx-border-color: green;");
-                ok.setDisable(false);
-                //good             
-            }else {               
-                t_nom.setStyle("-fx-border-color: red;");
-                ok.setDisable(true);
-              // pas good regex
-            } 
-        }
-        else{           
+        //obtient de la classe regex la regex du champs
+        String regNom = Regex.regset("regNom");       
+        System.out.println(regNom);
+        
+        // de la classe test obtient resultat regex et champs vide     
+        n1 =  test.testreg(regNom, t_nom.getText());
+        
+        //gere  l'affichage fct classe test
+        if(n1){
+            t_nom.setStyle("-fx-border-color: green;");
+           
+        }else{
             t_nom.setStyle("-fx-border-color: red;");
-            ok.setDisable(true);
-           //pas good vide
-        }
+           
+        }     
     }
 
     @FXML
-    private void prenom_test(KeyEvent event) {
+    private void prenom_test(KeyEvent event) {  //test champ prenom si action
         
-        champs = "prenom";
+       champs = "prenom";
         
-        String pattern = "^[A-Z][A-Za-z0-9 éèçêë]+$";
-        Pattern test = Pattern.compile(pattern);
-        Matcher resu = test.matcher(t_prenom.getText());
-        
-        if(!t_prenom.getText().isEmpty()){
-            if(resu.find()){                
-                t_prenom.setStyle("-fx-border-color: green;");
-                ok.setDisable(false);
-                //good             
-            }else {               
-                t_prenom.setStyle("-fx-border-color: red;");
-                ok.setDisable(true);
-              // pas good regex
-            } 
-        }
-        else{           
+       n2 =  test.testreg(regPrenom, t_prenom.getText());
+       
+       if(n2){
+            t_prenom.setStyle("-fx-border-color: green;");
+            
+       }else{
             t_prenom.setStyle("-fx-border-color: red;");
-            ok.setDisable(true);
-           //pas good vide    
-        }
+            
+       }
     }
 
     @FXML
-    private void ville_test(KeyEvent event) {
+    private void ville_test(KeyEvent event) {  //test champs ville si action
         
         champs = "ville";
         
-        String pattern = "^[A-Z][A-Za-z0-9 éèçêë]+$";
-        Pattern test = Pattern.compile(pattern);
-        Matcher resu = test.matcher(t_ville.getText());
-        
-        if(!t_ville.getText().isEmpty()){
-            if(resu.find()){                
-                t_ville.setStyle("-fx-border-color: green;");
-                ok.setDisable(false);
-                //good             
-            }else {               
-                t_ville.setStyle("-fx-border-color: red;");
-                ok.setDisable(true);
-              // pas good regex
-            } 
-        }
-        else{           
+        n3 =  test.testreg(regVille, t_ville.getText());
+       
+        if(n3){
+            t_ville.setStyle("-fx-border-color: green;");
+            
+        }else{
             t_ville.setStyle("-fx-border-color: red;");
-            ok.setDisable(true);
-           //pas good vide
-        }
+           
+        }        
     }
 
     @FXML
