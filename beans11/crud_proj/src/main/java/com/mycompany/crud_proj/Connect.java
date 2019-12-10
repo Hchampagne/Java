@@ -23,8 +23,7 @@ public class Connect {
     private static final  String MDP = "";
     private static Connection con;
     
-    public static Connection getConnection(){
-        
+    public static Connection getConnection(){       
         try {
             ///connexion base
             con = DriverManager.getConnection(URL, LOGIN , MDP);

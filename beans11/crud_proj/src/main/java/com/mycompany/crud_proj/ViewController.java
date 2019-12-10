@@ -157,7 +157,7 @@ public class ViewController implements Initializable {
     private void click_annuler(ActionEvent event) {
         
         //fournis le role = "" appuie bouton annuler 
-        role = "";
+        role = "annul";
         //vide les textview et cache menu de droite
         textview();      
     }
@@ -182,7 +182,7 @@ public class ViewController implements Initializable {
                     //actualise la liste
                     actual();
                 }else{
-                    //les champs sont vide => popup  message erreur
+                    //les champs sont vide / regex non ok=> popup  message erreur
                      Alert alert = new Alert(AlertType.ERROR);
                      alert.setHeaderText("Ajout à la base");
                      alert.setContentText("Saisie incorrecte ! ");
@@ -199,14 +199,14 @@ public class ViewController implements Initializable {
                 up.ville = t_ville.getText(); 
                 
                 if(n1 && n2 && n3){
-                    // les champs ne sont pas vide
+                    // les champs ne sont pas vide et regex ok
                     // instancie classe dao et update base de donnée   
                     ClientDAO update = new ClientDAO(); 
                     update.Update(up);
                     //actualise la liste
                     actual();
                 }else{
-                    //les champs sont vide => popup  message erreur
+                    //les champs sont vide/regex non ok => popup  message erreur
                     Alert alert = new Alert(AlertType.ERROR);
                     alert.setHeaderText("Modification de la base");
                     alert.setContentText("Saisie incorrecte ! ");
@@ -244,7 +244,7 @@ public class ViewController implements Initializable {
     
     public void textview(){ // 
         
-        if (!"".equals(role)){ //si appuie bouton annuler =>else
+        if (!"annul".equals(role)){ //si appuie bouton annuler =>else
         
         //rend visible les textview
         cache.setVisible(false);
