@@ -21,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -70,9 +71,13 @@ public class ViewController implements Initializable {
     @FXML
     private Button supprimer;
     @FXML
-    private Label mess_error;
-    @FXML
     private Button effacer;
+    @FXML
+    private Label er_nom;
+    @FXML
+    private Label er_prenom;
+    @FXML
+    private Label er_ville;
 
     /**
      * Initializes the controller class.
@@ -137,8 +142,12 @@ public class ViewController implements Initializable {
     @FXML
     private void click_modif(ActionEvent event) {
         
+        //initialise les valeurs test à true valeur de la base considéré comme ok
+        n1 = n2 = n3 = true;
+        
         //fournis le role = mod appuie bouton modification (switc/case)
-        role = "mod";      
+        role = "mod";  
+               
         //  textview  / modifiable
         textview();
              
@@ -190,13 +199,17 @@ public class ViewController implements Initializable {
                 }               
                 break ;
                 
-            case "mod" : 
+            case "mod" :
+                
+                
                 // instancie un client
                 Client up = new Client();
-                up.id = id;               
+                up.id = id;                
                 up.nom = t_nom.getText();
                 up.prenom = t_prenom.getText();
                 up.ville = t_ville.getText(); 
+                
+                
                 
                 if(n1 && n2 && n3){
                     // les champs ne sont pas vide et regex ok
@@ -209,7 +222,7 @@ public class ViewController implements Initializable {
                     //les champs sont vide/regex non ok => popup  message erreur
                     Alert alert = new Alert(AlertType.ERROR);
                     alert.setHeaderText("Modification de la base");
-                    alert.setContentText("Saisie incorrecte ! ");
+                    alert.setContentText("Modification impossible : Saisie incorrecte ! ");
                     alert.show();
                 }
                 break;
@@ -231,7 +244,9 @@ public class ViewController implements Initializable {
     }
     
     public void actual(){ //rafraichit la liste
-           
+        
+        //reset false les tests 
+        n1 = n2 = n3 = false;
         //instancie classe ClientDAO
         ClientDAO liste = new ClientDAO();        
         // recup le return dans model
@@ -254,6 +269,7 @@ public class ViewController implements Initializable {
         Client row = find.Find(id);
         
         // garni les textview 
+       
         t_nom.setText(row.nom);
         t_prenom.setText(row.prenom);
         t_ville.setText(row.ville);
@@ -268,48 +284,50 @@ public class ViewController implements Initializable {
         if("add".equals(role)){t_prenom.clear();}
         if("add".equals(role)){t_ville.clear();}
         
-        }else{
+        }else{ //bouton annuler reset toutes les champs et test
+            
+            //reset false les tests 
+             n1 = n2 = n3 = false;
+            
             // active le cache menu droite
             cache.setVisible(true);
             
             //clear textview
             t_nom.clear();
+            er_nom.setText("");
             t_nom.setStyle("-fx-border-color: grey;");
             t_prenom.clear();
+            er_prenom.setText("");
             t_prenom.setStyle("-fx-border-color: grey;");
             t_ville.clear();
+            er_ville.setText("");
             t_ville.setStyle("-fx-border-color: grey;");
         }       
     }
 
     @FXML
-    private void nom_test(KeyEvent event) {  // champs nom si action
-        
-        //variable pour fct efface
-        champs = "nom"; 
+    private void nom_test(KeyEvent event) {  // champs nom si  action
         
         //obtient de la classe regex la regex du champs
         String regNom = Regex.regset("regNom");           
         
         // de la classe test obtient resultat regex et champs vide     
-        n1 =  test.testreg(regNom, t_nom.getText());
+        n1 =  test.testreg(regNom , t_nom.getText());
         
         //gere  l'affichage fct classe test
         if(n1){
             t_nom.setStyle("-fx-border-color: green;");
-           
+            er_nom.setText("");
         }else{
             t_nom.setStyle("-fx-border-color: red;");
-           
+            er_nom.setText("Erreur de Saisie !");
+            er_nom.setStyle("-fx-text-fill: red;");
         }     
     }
 
     @FXML
     private void prenom_test(KeyEvent event) {  //test champ prenom si action
-        
-       //variable pour fct efface
-       champs = "prenom";
-       
+           
        //obtient de la classe regex la regex du champs
        String regPrenom = Regex.regset("regNom");       
        // de la classe test obtient resultat regex et champs vide         
@@ -317,17 +335,17 @@ public class ViewController implements Initializable {
        //gere  l'affichage fct classe test
        if(n2){
             t_prenom.setStyle("-fx-border-color: green;");
-            
+            er_prenom.setText("");
        }else{
             t_prenom.setStyle("-fx-border-color: red;");
-            
+            er_prenom.setText("Erreur de Saisie !");
+            er_prenom.setStyle("-fx-text-fill: red;");
        }
     }
 
     @FXML
     private void ville_test(KeyEvent event) {  //test champs ville si action
-        //variable pour fct efface
-        champs = "ville";       
+      
         //obtient de la classe regex la regex du champs
         String regVille = Regex.regset("regNom");       
         // de la classe test obtient resultat regex et champs vide     
@@ -335,12 +353,19 @@ public class ViewController implements Initializable {
         //gere  l'affichage fct classe test
         if(n3){
             t_ville.setStyle("-fx-border-color: green;");
-            
+            er_ville.setText("");
         }else{
-            t_ville.setStyle("-fx-border-color: red;");         
+            t_ville.setStyle("-fx-border-color: red;"); 
+            er_ville.setText("Erreur de Saisie !");
+            er_ville.setStyle("-fx-text-fill: red;");
         }        
     }
-
+    
+    
+    
+   
+    //EFFACER
+    
     @FXML
     private void click_effacer(ActionEvent event) {       
         
@@ -348,17 +373,23 @@ public class ViewController implements Initializable {
         else {
         // efface saisie en cours
         switch (champs) {
-            case "nom":
+            case "t_nom":
+                n1 = false;
                 t_nom.setText("");
                 t_nom.setStyle("-fx-border-color: grey;");
+                er_nom.setText("");
                 break;
-            case "prenom":
+            case "t_prenom":
+                n2 = false;
                 t_prenom.setText("");
                 t_prenom.setStyle("-fx-border-color: grey;");
+                er_prenom.setText("");
                 break;
-            case "ville":
+            case "t_ville":
+                n3 = false;
                 t_ville.setText("");
                 t_ville.setStyle("-fx-border-color: grey;");
+                er_ville.setText("");
                 break;
             default:
                 champs = "";
@@ -366,10 +397,24 @@ public class ViewController implements Initializable {
         }        
         }
     }
+
+    @FXML
+    private void efface(MouseEvent event) {
+        //recup fxid du textfield cliqué
+        TextField TV =(TextField)event.getSource();
+        champs = TV.getId();      
     }
 
+    
+    
 
-   
+    
+        
+//fin        
+} 
+    
+
+
     
     
 

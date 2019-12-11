@@ -29,15 +29,13 @@ public class test {
     }
     
     public static boolean testreg(String reg, String champs){
-               
-        boolean vide = false;// pour champs        
+                             
         // test regex
         Pattern test = Pattern.compile(reg);
         Matcher resu = test.matcher(champs);
-        //test champs vide
-        if(!"".equals(champs)){vide = true;}
+        
         // test entrez valide champs vide et regex
-        boolean res = resu.find() && vide;
+        boolean res = resu.find() && (!"".equals(champs));
         // retourne booléen true si ok     
         return res;           
     }
