@@ -108,7 +108,7 @@ public class ViewController implements Initializable {
     private void tab_click(MouseEvent event) {           
     /*    
     Sur click souris selection dans tableau recup index tableau
-    => id de l'enregistrement.
+    => id de l'enregistrement de la table.
     */    
         index = tableview.getSelectionModel().getSelectedIndex(); // recup index 
            
@@ -274,11 +274,11 @@ public class ViewController implements Initializable {
             
             //clear textview
             t_nom.clear();
-            t_nom.setStyle("-fx-border-color: default;");
+            t_nom.setStyle("-fx-border-color: grey;");
             t_prenom.clear();
-            t_prenom.setStyle("-fx-border-color: default;");
+            t_prenom.setStyle("-fx-border-color: grey;");
             t_ville.clear();
-            t_ville.setStyle("-fx-border-color: default;");
+            t_ville.setStyle("-fx-border-color: grey;");
         }       
     }
 
@@ -307,13 +307,14 @@ public class ViewController implements Initializable {
     @FXML
     private void prenom_test(KeyEvent event) {  //test champ prenom si action
         
+       //variable pour fct efface
        champs = "prenom";
        
        //obtient de la classe regex la regex du champs
-        String regPrenom = Regex.regset("regNom");       
-             
+       String regPrenom = Regex.regset("regNom");       
+       // de la classe test obtient resultat regex et champs vide         
        n2 =  test.testreg(regPrenom, t_prenom.getText());
-       
+       //gere  l'affichage fct classe test
        if(n2){
             t_prenom.setStyle("-fx-border-color: green;");
             
@@ -325,20 +326,18 @@ public class ViewController implements Initializable {
 
     @FXML
     private void ville_test(KeyEvent event) {  //test champs ville si action
-        
-        champs = "ville";
-        
+        //variable pour fct efface
+        champs = "ville";       
         //obtient de la classe regex la regex du champs
         String regVille = Regex.regset("regNom");       
-             
+        // de la classe test obtient resultat regex et champs vide     
         n3 =  test.testreg(regVille, t_ville.getText());
-       
+        //gere  l'affichage fct classe test
         if(n3){
             t_ville.setStyle("-fx-border-color: green;");
             
         }else{
-            t_ville.setStyle("-fx-border-color: red;");
-           
+            t_ville.setStyle("-fx-border-color: red;");         
         }        
     }
 
@@ -346,23 +345,25 @@ public class ViewController implements Initializable {
     private void click_effacer(ActionEvent event) {       
         
         if(null == champs){champs = "";}
-        else // efface saisie en cours
+        else {
+        // efface saisie en cours
         switch (champs) {
             case "nom":
                 t_nom.setText("");
-                t_nom.setStyle("-fx-border-color: default;");
+                t_nom.setStyle("-fx-border-color: grey;");
                 break;
             case "prenom":
                 t_prenom.setText("");
-                t_prenom.setStyle("-fx-border-color: default;");
+                t_prenom.setStyle("-fx-border-color: grey;");
                 break;
             case "ville":
                 t_ville.setText("");
-                t_ville.setStyle("-fx-border-color: default;");
+                t_ville.setStyle("-fx-border-color: grey;");
                 break;
             default:
                 champs = "";
                 break;
+        }        
         }
     }
     }

@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
  *
  * @author 80010-92-01
  */
+
 public class test {
     
     public  String reg;

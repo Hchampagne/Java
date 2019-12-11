@@ -13,9 +13,9 @@ public class Regex {
     
     private  String set;
     
-    private static String regNom = "^[A-Z][A-Za-z0-9 éèçêë]+$";
-    private static String regPrenom = "^[A-Z][A-Za-z0-9 éèçêë]+$";
-    private static String regVille = "^[A-Z][A-Za-z0-9 éèçêë]+$";
+    private static String regNom = "^[A-Z][A-Za-z éèçêë]+$";
+    private static String regPrenom = "^[A-Z][A-Za-z éèçêë]+$";
+    private static String regVille = "^[A-Z][A-Za-z éèçêë]+$";
     
     private static String result;
     

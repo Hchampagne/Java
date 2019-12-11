@@ -42,7 +42,6 @@
                 <version>0.0.3</version>
                 <configuration>
                     <mainClass>com.mycompany.exercice1.App</mainClass>	
-                    <!--<mainClass>org.afpa.App</mainClass>	-->
                     <launcher>launch</launcher>	
                     <compress>2</compress>	
                     <jlinkZipName>test1</jlinkZipName>	
