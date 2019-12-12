@@ -21,7 +21,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -207,9 +206,14 @@ public class ViewController implements Initializable {
                 up.id = id;                
                 up.nom = t_nom.getText();
                 up.prenom = t_prenom.getText();
-                up.ville = t_ville.getText(); 
+                up.ville = t_ville.getText();
                 
-                
+                String regNom = Regex.regset("regNom");
+                n1 =  test.testreg(regNom, t_nom.getText());
+                String regPrenom = Regex.regset("regNom");
+                n2 =  test.testreg(regPrenom , t_prenom.getText());
+                String regVille = Regex.regset("regNom");
+                n3 =  test.testreg(regVille , t_ville.getText());
                 
                 if(n1 && n2 && n3){
                     // les champs ne sont pas vide et regex ok
@@ -287,7 +291,7 @@ public class ViewController implements Initializable {
         }else{ //bouton annuler reset toutes les champs et test
             
             //reset false les tests 
-             n1 = n2 = n3 = false;
+            n1 = n2 = n3 = false;
             
             // active le cache menu droite
             cache.setVisible(true);
@@ -402,7 +406,11 @@ public class ViewController implements Initializable {
     private void efface(MouseEvent event) {
         //recup fxid du textfield cliqué
         TextField TV =(TextField)event.getSource();
-        champs = TV.getId();      
+        champs = TV.getId();  
+        System.out.println(champs);
+        System.out.print("nom : " + n1);
+        System.out.print("prenom : " + n2);
+        System.out.print("ville : " + n3);
     }
 
     

@@ -29,6 +29,7 @@ public class ClientDAO {
     private static PreparedStatement Pstm = null;
     private static PreparedStatement del = null;
     private static PreparedStatement mod = null;
+    private static PreparedStatement sel = null;
     private static ResultSet select = null;
     
     
@@ -168,7 +169,7 @@ public class ClientDAO {
         try {
             //connexion et re requete preparé
             con = Connect.getConnection(); 
-            PreparedStatement sel = con.prepareStatement("SELECT cli_id, cli_nom, cli_prenom, cli_ville FROM client WHERE cli_id = ?");
+            sel = con.prepareStatement("SELECT cli_id, cli_nom, cli_prenom, cli_ville FROM client WHERE cli_id = ?");
             //liaison variable position requete
             sel.setInt(1, id);
             // exécution requete et recup row db
