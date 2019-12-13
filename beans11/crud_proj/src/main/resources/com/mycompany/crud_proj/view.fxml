@@ -12,9 +12,6 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="437.0" prefWidth="1037.0" style="-fx-background-color: grey;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.crud_proj.ViewController">
-    <stylesheets>
-        <URL value="@/styles/view.css" />
-    </stylesheets>
    <children>
       <TableView fx:id="tableview" layoutX="91.0" layoutY="207.0" onMouseClicked="#tab_click" prefHeight="0.0" prefWidth="440.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
         <columns>
