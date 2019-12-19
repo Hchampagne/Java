@@ -86,9 +86,11 @@ public class ViewController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-             
+        
+       
         //instancie classe ClientDAO
-        ClientDAO liste = new ClientDAO();        
+        ClientDAO liste = new ClientDAO(); 
+               
         // recup le return dans model
         List<Client> model = liste.List();       
         // cast la "arraylist" en observablelist pour tableview 
@@ -105,8 +107,10 @@ public class ViewController implements Initializable {
         tableview.setEditable(false);
         
         //rempli le tableview     
-        tableview.setItems(mod);       
-    }      
+        tableview.setItems(mod);  
+        
+    } 
+
 
     @FXML
     private void tab_click(MouseEvent event) {           
