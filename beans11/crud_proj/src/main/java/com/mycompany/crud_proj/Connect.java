@@ -18,7 +18,7 @@ import javafx.scene.control.Alert;
 public class Connect {
     
     // param connexion à la base
-    private static final  String URL = "jdbc:mysql://localhost:3306/hotel?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+    private static final  String URL = "jdbc:mysql://localhost:3307/hotel?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
     private static final  String LOGIN = "root";
     private static final  String MDP = "";
     private static Connection con;

@@ -90,7 +90,7 @@ public class ViewController implements Initializable {
        
         //instancie classe ClientDAO
         ClientDAO liste = new ClientDAO(); 
-               
+        try{       
         // recup le return dans model
         List<Client> model = liste.List();       
         // cast la "arraylist" en observablelist pour tableview 
@@ -101,14 +101,21 @@ public class ViewController implements Initializable {
         c_prenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));	
         c_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));	
         c_ville.setCellValueFactory(new PropertyValueFactory<>("ville"));
-        
-        
+       
+                    
         // empeche edition table
         tableview.setEditable(false);
         
         //rempli le tableview     
         tableview.setItems(mod);  
-        
+        }catch(Exception e){
+             
+           // Alert alert = new Alert(AlertType.ERROR);
+           //alert.setHeaderText("Accès base de données");
+           //alert.setContentText("problème connexion : impossible de construire la liste ");
+           //alert.show();
+            
+        }
     } 
 
 

@@ -61,7 +61,7 @@ public class ClientDAO {
             } catch (SQLException e) {
                 //popup alert erreur
                 Alert alert = new Alert(AlertType.ERROR);
-                alert.setHeaderText("AJOUT");
+                alert.setHeaderText("Liste");
                 alert.setContentText("Erreur acces pour la liste /n."+ e.getMessage());
                 alert.show();
         }
